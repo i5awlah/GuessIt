@@ -8,17 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DED2966C66E00F9FC01 /* GuessItApp.swift */; };
-		90321DF02966C66E00F9FC01 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DEF2966C66E00F9FC01 /* ContentView.swift */; };
 		90321DF22966C66F00F9FC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90321DF12966C66F00F9FC01 /* Assets.xcassets */; };
 		90321DF52966C66F00F9FC01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90321DF42966C66F00F9FC01 /* Preview Assets.xcassets */; };
+		90321DFC2966C79100F9FC01 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DFB2966C79100F9FC01 /* StartView.swift */; };
+		90321DFE2966C7B700F9FC01 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DFD2966C7B700F9FC01 /* LevelView.swift */; };
+		90321E002966C7DF00F9FC01 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DFF2966C7DF00F9FC01 /* WinView.swift */; };
+		90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321E042966C84900F9FC01 /* QuestionModel.swift */; };
+		90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321E062966C93800F9FC01 /* QuestionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		90321DEA2966C66E00F9FC01 /* GuessIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90321DED2966C66E00F9FC01 /* GuessItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessItApp.swift; sourceTree = "<group>"; };
-		90321DEF2966C66E00F9FC01 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		90321DF12966C66F00F9FC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90321DF42966C66F00F9FC01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		90321DFB2966C79100F9FC01 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		90321DFD2966C7B700F9FC01 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
+		90321DFF2966C7DF00F9FC01 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
+		90321E042966C84900F9FC01 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
+		90321E062966C93800F9FC01 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +59,9 @@
 		90321DEC2966C66E00F9FC01 /* GuessIt */ = {
 			isa = PBXGroup;
 			children = (
-				90321DED2966C66E00F9FC01 /* GuessItApp.swift */,
-				90321DEF2966C66E00F9FC01 /* ContentView.swift */,
-				90321DF12966C66F00F9FC01 /* Assets.xcassets */,
+				90321E022966C7FB00F9FC01 /* Model */,
+				90321E012966C7EC00F9FC01 /* View */,
+				90321E032966C80A00F9FC01 /* ViewModel */,
 				90321DF32966C66F00F9FC01 /* Preview Content */,
 			);
 			path = GuessIt;
@@ -65,6 +73,34 @@
 				90321DF42966C66F00F9FC01 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		90321E012966C7EC00F9FC01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				90321DED2966C66E00F9FC01 /* GuessItApp.swift */,
+				90321DFB2966C79100F9FC01 /* StartView.swift */,
+				90321DFD2966C7B700F9FC01 /* LevelView.swift */,
+				90321DFF2966C7DF00F9FC01 /* WinView.swift */,
+				90321DF12966C66F00F9FC01 /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		90321E022966C7FB00F9FC01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90321E042966C84900F9FC01 /* QuestionModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		90321E032966C80A00F9FC01 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				90321E062966C93800F9FC01 /* QuestionViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +173,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90321DF02966C66E00F9FC01 /* ContentView.swift in Sources */,
+				90321DFC2966C79100F9FC01 /* StartView.swift in Sources */,
+				90321E002966C7DF00F9FC01 /* WinView.swift in Sources */,
+				90321DFE2966C7B700F9FC01 /* LevelView.swift in Sources */,
 				90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */,
+				90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */,
+				90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
