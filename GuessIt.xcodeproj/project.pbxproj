@@ -15,6 +15,7 @@
 		90321E002966C7DF00F9FC01 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DFF2966C7DF00F9FC01 /* WinView.swift */; };
 		90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321E042966C84900F9FC01 /* QuestionModel.swift */; };
 		90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321E062966C93800F9FC01 /* QuestionViewModel.swift */; };
+		90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B8E296AAD4600E8945E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		90321DFF2966C7DF00F9FC01 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
 		90321E042966C84900F9FC01 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		90321E062966C93800F9FC01 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		90D10B8E296AAD4600E8945E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				90321E022966C7FB00F9FC01 /* Model */,
 				90321E012966C7EC00F9FC01 /* View */,
 				90321E032966C80A00F9FC01 /* ViewModel */,
+				90D10B8D296AAD3300E8945E /* Utilities */,
 				90321DF32966C66F00F9FC01 /* Preview Content */,
 			);
 			path = GuessIt;
@@ -101,6 +104,14 @@
 				90321E062966C93800F9FC01 /* QuestionViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		90D10B8D296AAD3300E8945E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				90D10B8E296AAD4600E8945E /* Extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */,
 				90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */,
 				90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */,
+				90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
