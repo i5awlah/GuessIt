@@ -8,13 +8,25 @@
 import SwiftUI
 
 struct StartView: View {
+    
+    @EnvironmentObject var questionViewModel: QuestionViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            NavigationLink {
+                LevelView()
+                    .navigationBarBackButtonHidden(true)
+            } label: {
+                Text("start")
+            }
+
+        }
     }
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
         StartView()
+            .environmentObject(QuestionViewModel())
     }
 }

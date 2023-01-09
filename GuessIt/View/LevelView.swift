@@ -48,9 +48,9 @@ extension LevelView {
             .fill(Color.navbarColor)
             .frame(height: 98)
             .overlay(alignment: .bottom) {
-                Text("LEVEL\(questionViewModel.levelNumber)")
+                Text("LEVEL\(String(questionViewModel.levelNumber+1))")
                     .bold()
-                    .font(.custom("Arial Narrow", size: 26))
+                    .font(.titleFont(for: questionViewModel.appLanguage))
                     .foregroundColor(.white)
                     .frame(height: 65)
                     .frame(maxWidth: .infinity)
@@ -73,11 +73,14 @@ extension LevelView {
                             Image("goldenCoin")
                                 .resizable()
                                 .frame(width: 65, height: 65)
-                            Text(String(questionViewModel.coin))
+                            
+                            Text("\(questionViewModel.coin)")
                                 .font(.title3)
                                 .foregroundColor(.babyYellow)
                                 .padding(.leading, -10)
                         }
+                        .padding(.leading, -10)
+                        .environment(\.layoutDirection, .leftToRight)
                     }
                     .padding(.horizontal, 16)
                     .offset(y: 5)
@@ -92,16 +95,16 @@ extension LevelView {
     
     var questionCard: some View {
         VStack {
-            Text("Guess the \(questionViewModel.questions[questionViewModel.levelNumber - 1].questionType.rawValue)")
+            Text("Guess the \(questionViewModel.questions[questionViewModel.levelNumber].questionType.rawValue.localized)")
                 .foregroundColor(.white)
-                .font(.custom("Arial", size: 30))
+                .font(.questionFont(for: questionViewModel.appLanguage))
             
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(height: 175)
                 .padding(.horizontal, 16)
                 .overlay {
-                    Text(questionViewModel.questions[questionViewModel.levelNumber - 1].emojis)
+                    Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                         .font(.system(size: 60))
                 }
         }
@@ -110,7 +113,7 @@ extension LevelView {
     var answers: some View {
         HStack {
             
-            ForEach(0..<questionViewModel.questions[questionViewModel.levelNumber - 1].answer.count, id: \.self) { i in
+            ForEach(0..<questionViewModel.questions[questionViewModel.levelNumber].answer.count, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 8)
                     .fill(userAnswer.indices.contains(i) ? Color.lightGreen : Color.babyLavender)
                     .frame(width: 36, height: 36)
@@ -152,7 +155,7 @@ extension LevelView {
                             .foregroundColor(.letterLavender)
                     }
                     .onTapGesture {
-                        if userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber - 1].answer.count {
+                        if userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber].answer.count {
                             handleAddingLetterToAnswer(item: item)
                         }
                     }
@@ -170,13 +173,13 @@ extension LevelView {
         userAnswer.append(item)
         
         // check if user fill all letters
-        if userAnswer.count == questionViewModel.questions[questionViewModel.levelNumber - 1].answer.count {
+        if userAnswer.count == questionViewModel.questions[questionViewModel.levelNumber].answer.count {
             
             var fullUserAnswer = ""
             userAnswer.forEach({ fullUserAnswer += $0.letter })
             
             // check if user answer and quastion answer is sama
-            if fullUserAnswer.lowercased() == questionViewModel.questions[questionViewModel.levelNumber - 1].answer.lowercased() {
+            if fullUserAnswer.lowercased() == questionViewModel.questions[questionViewModel.levelNumber].answer.lowercased() {
                 handleCorrectAnswer()
             } else {
                 handleWrongAnswer()

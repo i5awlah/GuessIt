@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  GuessIt
+
+  Created by Khawlah on 09/01/2023.
+  
+*/
+
+
+// start view
+"Play" = "العب";
+
+// level view
+"LEVEL%@" = "المستوى%@";
+"Guess the %@" = "خمن اسم %@";
+
+
+// win view
+"Excellent !" = "ممتاز !";
+"Next Level" = "المستوى التالي";
+"Quit" = "خروج";
+
+// enum cases
+"City" = "المدينة";
+"Food" = "الطعام";
+
+"abcdefghijklmnopqrstuvwxyz" = "ابتثحخدذرزسشصضطظعغفقكلمنهويءئؤةى";
