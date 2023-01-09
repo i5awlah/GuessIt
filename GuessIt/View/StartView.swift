@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct StartView: View {
+    
+    @EnvironmentObject var questionViewModel: QuestionViewModel
+    
     var body: some View {
+
         ZStack{
             (AngularGradient (
                 gradient: Gradient(colors: [Color(.gray)]),
@@ -46,6 +50,7 @@ struct StartView: View {
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
         StartView()
+            .environmentObject(QuestionViewModel())
     }
 }
                 }

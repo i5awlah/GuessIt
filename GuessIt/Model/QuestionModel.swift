@@ -19,7 +19,13 @@ struct Question {
 }
 
 extension Question {
-    static var questions = [
+    static var englishQuestions = [
+        Question(questionType: .city, emojis: "🌊 🦉", answer: "Seoul")
+        , Question(questionType: .city, emojis: "🐁🐮", answer: "Moscow")
+        , Question(questionType: .city, emojis: "🍫🌧", answer: "Bahrain")
+    ]
+    
+    static var arabicQuestions = [
         Question(questionType: .city, emojis: "🌞🌞", answer: "الشماسية"),
         Question(questionType: .city, emojis: "🌱🌱🌱🌱", answer: "حقل"),
         Question(questionType: .city, emojis: "👸🏼", answer: "شقراء")
