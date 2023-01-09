@@ -151,7 +151,7 @@ extension LevelView {
                         .frame(height: 63)
                         .overlay {
                             Text(item.letter)
-                                .font(.custom("Arial", size: 32))
+                                .font(.letterFont(for: questionViewModel.appLanguage))
                             .foregroundColor(.letterLavender)
                     }
                     .onTapGesture {

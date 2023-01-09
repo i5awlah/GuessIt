@@ -35,8 +35,6 @@ extension String {
 extension Font {
     static func questionFont(for language: String) -> Font {
         switch language {
-        case "en":
-            return .custom("Arial", size: 30)
         case "ar":
             return .custom("SF Arabic", size: 30)
         default:
@@ -46,12 +44,19 @@ extension Font {
     
     static func titleFont(for language: String) -> Font {
         switch language {
-        case "en":
-            return .custom("Arial Narrow", size: 26)
         case "ar":
             return .custom("SF Arabic", size: 26)
         default:
             return .custom("Arial Narrow", size: 26)
+        }
+    }
+    
+    static func letterFont(for language: String) -> Font {
+        switch language {
+        case "ar":
+            return .custom("Geeza Pro", size: 32)
+        default:
+            return .custom("Arial", size: 32)
         }
     }
 }
