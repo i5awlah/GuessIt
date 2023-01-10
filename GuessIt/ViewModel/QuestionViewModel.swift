@@ -39,6 +39,7 @@ class QuestionViewModel: ObservableObject {
     }
     
     let coinsWhenWin = 10
+    let coinsWhenHint = 5
     
     init() {
         questions = Question.englishQuestions
@@ -115,5 +116,12 @@ class QuestionViewModel: ObservableObject {
         userAnswer.removeAll()
         isWinLevel = false
         
+    }
+    
+    func useHint() {
+        // sub coin
+        coin -= coinsWhenHint
+        let letterHint = "\(questions[levelNumber].answer[userAnswer.count])"
+        userAnswer.append(Letter(letter: letterHint))
     }
 }

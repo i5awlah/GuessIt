@@ -16,13 +16,14 @@ struct LevelView: View {
     
     @State var attempts: Int = 0
     @State var showWinView = false
+    @State var presentAlert = false
     
     var body: some View {
         ZStack(alignment: .top) {
             Color.linearGradient
                 .ignoresSafeArea()
             
-            VStack(spacing: 36) {
+            VStack(spacing: 24) {
                 navBar
                 questionCard
                 answers.disabled(questionViewModel.isWinLevel)
@@ -37,13 +38,29 @@ struct LevelView: View {
                 } else {
                     lettersGrid
                 }
+                
+                if !questionViewModel.isWinLevel {
+                    Button {
+                        presentAlert.toggle()
+                    } label: {
+                        HStack {
+                            Image("lightLamp")
+                            Text("Hint")
+                        }
+                    }
+                    .buttonStyle(OrangeButton())
+                }
             }
             .edgesIgnoringSafeArea(.top)
             
             
             if showWinView {
                 WinView(showWinView: $showWinView)
-            } 
+            }
+            
+            if presentAlert {
+                CustomAlert(presentAlert: $presentAlert)
+            }
             
         }
     }

@@ -39,6 +39,14 @@ extension String {
     }
 }
 
+extension String {
+    subscript(_ i: Int) -> String {
+        let idx1 = index(startIndex, offsetBy: i)
+        let idx2 = index(idx1, offsetBy: 1)
+        return String(self[idx1..<idx2])
+      }
+}
+
 extension Font {
     static func questionFont(for language: String) -> Font {
         switch language {
@@ -73,6 +81,15 @@ extension Font {
             return .custom("Geeza Pro", size: 21)
         default:
             return .custom("Arial", size: 25)
+        }
+    }
+    
+    static func textInShortButtonFont(for language: String) -> Font {
+        switch language {
+        case "ar":
+            return .custom("Geeza Pro", size: 22)
+        default:
+            return .custom("Arial", size: 22)
         }
     }
 }

@@ -14,12 +14,20 @@
 // level view
 "LEVEL%@" = "المستوى%@";
 "Guess the %@" = "خمن اسم %@";
+"Hint" = "تلميح";
 
 
 // win view
 "Excellent!" = "ممتاز!";
 "Next Level" = "المستوى التالي";
 "Quit" = "خروج";
+
+// Alert
+"Do you want a hint for" = "هل تريد تلميحًا بـ";
+"coins?" = "عملات؟";
+
+"Yes" = "نعم";
+"No" = "لا";
 
 // enum cases
 "City" = "المدينة";
