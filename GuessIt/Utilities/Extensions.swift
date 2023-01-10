@@ -23,7 +23,14 @@ extension Color {
     static let darkYellow = Color("darkYellow")
     static let lightYellow = Color("lightYellow")
     
+    static let darkOrange = Color("darkOrange")
+    static let lightOrange = Color("lightOrange")
+    
+    
+    
     static let linearGradient = LinearGradient(colors: [.darkLavender, .lightLavender], startPoint: .top, endPoint: .bottom)
+    static let yellowLinearGradient = LinearGradient(colors: [.darkYellow, .lightYellow], startPoint: .top, endPoint: .bottom)
+    static let orangeLinearGradient = LinearGradient(colors: [.darkOrange, .lightOrange], startPoint: .bottom, endPoint: .top)
 }
 
 extension String {
@@ -35,8 +42,6 @@ extension String {
 extension Font {
     static func questionFont(for language: String) -> Font {
         switch language {
-        case "en":
-            return .custom("Arial", size: 30)
         case "ar":
             return .custom("SF Arabic", size: 30)
         default:
@@ -46,15 +51,34 @@ extension Font {
     
     static func titleFont(for language: String) -> Font {
         switch language {
-        case "en":
-            return .custom("Arial Narrow", size: 26)
         case "ar":
             return .custom("SF Arabic", size: 26)
         default:
             return .custom("Arial Narrow", size: 26)
         }
     }
+    
+    static func letterFont(for language: String) -> Font {
+        switch language {
+        case "ar":
+            return .custom("Geeza Pro", size: 32)
+        default:
+            return .custom("Helvetica", size: 32)
+        }
+    }
+    
+    static func textInButtonFont(for language: String) -> Font {
+        switch language {
+        case "ar":
+            return .custom("Geeza Pro", size: 21)
+        default:
+            return .custom("Arial", size: 25)
+        }
+    }
 }
+
+// .font(.custom("", size: 32))
+// .font(.custom("Geeza Pro", size: ))
 
 struct Shake: GeometryEffect {
     var amount: CGFloat = 10

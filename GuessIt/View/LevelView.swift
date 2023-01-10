@@ -14,23 +14,47 @@ struct LevelView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var questionViewModel: QuestionViewModel
     
-    @State private var userAnswer: [Letter] = []
     @State var attempts: Int = 0
-        
+    @State var showWinView = false
+    
     var body: some View {
         ZStack(alignment: .top) {
             Color.linearGradient
                 .ignoresSafeArea()
+            
             VStack(spacing: 36) {
                 navBar
                 questionCard
-                answers
-                lettersGrid
+                answers.disabled(questionViewModel.isWinLevel)
+                
+                
+                if !questionViewModel.isLastLevel && questionViewModel.isWinLevel {
+                    Spacer()
+                    Button("Next Level") {
+                        questionViewModel.gotoNextLevel()
+                    }
+                    .buttonStyle(OrangeButton())
+                } else {
+                    lettersGrid
+                }
             }
             .edgesIgnoringSafeArea(.top)
-        }
-        .onAppear {
-            questionViewModel.getRandomLetter()
+            
+            
+            WinView {
+                withAnimation(.easeIn) {
+                    showWinView.toggle()
+                }
+                questionViewModel.gotoNextLevel()
+            } quitAction: {
+                withAnimation(.easeIn) {
+                    showWinView.toggle()
+                }
+            }
+            .scaleEffect(showWinView ? 1 : 0)
+            .opacity(showWinView ? 1 : 0)
+            
+            
         }
     }
 }
@@ -46,7 +70,7 @@ extension LevelView {
     var navBar: some View {
         Rectangle()
             .fill(Color.navbarColor)
-            .frame(height: 98)
+            .frame(height: 104)
             .overlay(alignment: .bottom) {
                 Text("LEVEL\(String(questionViewModel.levelNumber+1))")
                     .bold()
@@ -57,11 +81,11 @@ extension LevelView {
                     .overlay(alignment: .leading) {
                         Circle()
                             .fill(Color("backYellow"))
-                            .frame(width: 36, height: 36)
+                            .frame(width: 44, height: 44)
                             .overlay {
                                 Image(systemName: "arrow.backward")
                                     .bold()
-                                    .font(.callout)
+                                    .font(.title3)
                                     .foregroundColor(.white)
                             }
                             .onTapGesture {
@@ -83,7 +107,7 @@ extension LevelView {
                         .environment(\.layoutDirection, .leftToRight)
                     }
                     .padding(.horizontal, 16)
-                    .offset(y: 5)
+                    .offset(y: 2)
             }
             .overlay(alignment: .bottom) {
                 Rectangle()
@@ -102,11 +126,15 @@ extension LevelView {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(height: 175)
-                .padding(.horizontal, 16)
                 .overlay {
                     Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                         .font(.system(size: 60))
+                        .scaledToFit()
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1)
+                        .padding(.horizontal, 5)
                 }
+                .padding(.horizontal, 16)
         }
     }
     
@@ -115,19 +143,19 @@ extension LevelView {
             
             ForEach(0..<questionViewModel.questions[questionViewModel.levelNumber].answer.count, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(userAnswer.indices.contains(i) ? Color.lightGreen : Color.babyLavender)
+                    .fill(questionViewModel.userAnswer.indices.contains(i) ? Color.lightGreen : Color.babyLavender)
                     .frame(width: 36, height: 36)
                     .overlay {
-                        if userAnswer.indices.contains(i) {
-                            Text(userAnswer[i].letter)
-                                .font(.system(size: 32))
+                        if questionViewModel.userAnswer.indices.contains(i) {
+                            Text(questionViewModel.userAnswer[i].letter)
+                                .font(.letterFont(for: questionViewModel.appLanguage))
                                 .foregroundColor(Color.darkGreen)
                         }
                     }
                     .onTapGesture {
-                        if userAnswer.indices.contains(i) {
-                            userAnswer[i].isClicked = false
-                            userAnswer.remove(at: i)
+                        if questionViewModel.userAnswer.indices.contains(i) {
+                            questionViewModel.userAnswer[i].isClicked = false
+                            questionViewModel.userAnswer.remove(at: i)
                         }
                     }
             }
@@ -151,11 +179,11 @@ extension LevelView {
                         .frame(height: 63)
                         .overlay {
                             Text(item.letter)
-                                .font(.custom("Arial", size: 32))
+                                .font(.letterFont(for: questionViewModel.appLanguage))
                             .foregroundColor(.letterLavender)
                     }
                     .onTapGesture {
-                        if userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber].answer.count {
+                        if questionViewModel.userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber].answer.count {
                             handleAddingLetterToAnswer(item: item)
                         }
                     }
@@ -170,13 +198,13 @@ extension LevelView {
     
     func handleAddingLetterToAnswer(item: Letter) {
         item.isClicked = true
-        userAnswer.append(item)
+        questionViewModel.userAnswer.append(item)
         
         // check if user fill all letters
-        if userAnswer.count == questionViewModel.questions[questionViewModel.levelNumber].answer.count {
+        if questionViewModel.userAnswer.count == questionViewModel.questions[questionViewModel.levelNumber].answer.count {
             
             var fullUserAnswer = ""
-            userAnswer.forEach({ fullUserAnswer += $0.letter })
+            questionViewModel.userAnswer.forEach({ fullUserAnswer += $0.letter })
             
             // check if user answer and quastion answer is sama
             if fullUserAnswer.lowercased() == questionViewModel.questions[questionViewModel.levelNumber].answer.lowercased() {
@@ -188,20 +216,23 @@ extension LevelView {
     }
     
     func handleCorrectAnswer() {
+        SoundManager.shared.playSound(soundType: .successSound)
         print("Win!!")
+        // to disable any click
+        questionViewModel.isWinLevel = true
         // show Excellent view
-        
-        // remove userAnswer
-        userAnswer.removeAll()
-        
-        questionViewModel.userWonTheLevel()
-
+        withAnimation(.easeIn) {
+            showWinView.toggle()
+        }
+        questionViewModel.increaseCoins()
+        questionViewModel.checkIfLastLevel()
     }
     
     func handleWrongAnswer() {
+        SoundManager.shared.playSound(soundType: .wrongSound)
         withAnimation(.default) {
             self.attempts += 1
-            userAnswer.removeAll()
+            questionViewModel.userAnswer.removeAll()
             questionViewModel.randomLetter.forEach({ $0.isClicked = false })
         }
     }

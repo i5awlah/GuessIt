@@ -18,6 +18,10 @@
 		90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B8E296AAD4600E8945E /* Extensions.swift */; };
 		90D10B93296B585300E8945E /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B92296B585300E8945E /* LetterModel.swift */; };
 		90D10B96296BED8000E8945E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90D10B98296BED8000E8945E /* Localizable.strings */; };
+		90D10B9B296C636C00E8945E /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B9A296C636C00E8945E /* ButtonModifier.swift */; };
+		90D10B9D296CBAC800E8945E /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B9C296CBAC800E8945E /* SoundManager.swift */; };
+		90D10BA1296CBAF200E8945E /* successSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90D10B9F296CBAF200E8945E /* successSound.mp3 */; };
+		90D10BA3296CBBBF00E8945E /* wrongSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 90D10BA2296CBBBF00E8945E /* wrongSound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		90D10B8E296AAD4600E8945E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		90D10B92296B585300E8945E /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
 		90D10B97296BED8000E8945E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		90D10B9A296C636C00E8945E /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		90D10B9C296CBAC800E8945E /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		90D10B9F296CBAF200E8945E /* successSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = successSound.mp3; sourceTree = "<group>"; };
+		90D10BA2296CBBBF00E8945E /* wrongSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrongSound.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 				90321DFD2966C7B700F9FC01 /* LevelView.swift */,
 				90321DFF2966C7DF00F9FC01 /* WinView.swift */,
 				90321DF12966C66F00F9FC01 /* Assets.xcassets */,
+				90D10B99296C634E00E8945E /* Shared */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,8 +125,19 @@
 			isa = PBXGroup;
 			children = (
 				90D10B8E296AAD4600E8945E /* Extensions.swift */,
+				90D10B9C296CBAC800E8945E /* SoundManager.swift */,
+				90D10BA2296CBBBF00E8945E /* wrongSound.mp3 */,
+				90D10B9F296CBAF200E8945E /* successSound.mp3 */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		90D10B99296C634E00E8945E /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				90D10B9A296C636C00E8945E /* ButtonModifier.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +199,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90D10BA3296CBBBF00E8945E /* wrongSound.mp3 in Resources */,
 				90321DF52966C66F00F9FC01 /* Preview Assets.xcassets in Resources */,
 				90D10B96296BED8000E8945E /* Localizable.strings in Resources */,
+				90D10BA1296CBAF200E8945E /* successSound.mp3 in Resources */,
 				90321DF22966C66F00F9FC01 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,12 +216,14 @@
 			files = (
 				90321DFC2966C79100F9FC01 /* StartView.swift in Sources */,
 				90321E002966C7DF00F9FC01 /* WinView.swift in Sources */,
+				90D10B9B296C636C00E8945E /* ButtonModifier.swift in Sources */,
 				90321DFE2966C7B700F9FC01 /* LevelView.swift in Sources */,
 				90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */,
 				90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */,
 				90D10B93296B585300E8945E /* LetterModel.swift in Sources */,
 				90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */,
 				90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */,
+				90D10B9D296CBAC800E8945E /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
