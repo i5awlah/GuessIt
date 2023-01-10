@@ -11,8 +11,8 @@ struct WinView: View {
     
     @EnvironmentObject var questionViewModel: QuestionViewModel
     
-    let nextAction: () -> Void
-    let quitAction: () -> Void
+    @Binding var showWinView: Bool
+    @State var isAppear = false
     
     var body: some View {
         ZStack {
@@ -26,6 +26,7 @@ struct WinView: View {
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width)
                 .ignoresSafeArea()
+                .accessibilityHidden(true)
             
             VStack {
                 
@@ -41,7 +42,7 @@ struct WinView: View {
                         .overlay {
                             RoundedRectangle(cornerRadius: 16)
                                 .fill(Color.customOrange)
-                                .frame(width: 210 ,height: 132)
+                                .frame(width: UIScreen.main.bounds.width * 0.5 ,height: 130)
                                 .mask(
                                     RoundedRectangle(cornerRadius: 16)
                                         .stroke((Color.white), lineWidth: 3)
@@ -54,10 +55,12 @@ struct WinView: View {
                                                 .scaledToFit()
                                                 .minimumScaleFactor(0.01)
                                                 .lineLimit(1)
-                                                .padding(.horizontal, 5)
+                                                .padding(.horizontal, 16)
+                                                .accessibilityHint("Question")
                                         Text(questionViewModel.questions[questionViewModel.levelNumber].answer)
                                             .font(.custom("Arial", size: 30))
                                             .foregroundColor(Color.customOrange)
+                                            .accessibilityHint("Question answer")
                                     }
                                 }
                         }
@@ -76,6 +79,7 @@ struct WinView: View {
                                     Image(systemName: "checkmark")
                                         .foregroundColor (.white)
                                         .font(.system(size: 60))
+                                        .accessibilityHidden(true)
                                 }
                                 .overlay(alignment: .bottomTrailing, content: {
                                     RoundedRectangle(cornerRadius: 16)
@@ -95,10 +99,12 @@ struct WinView: View {
                                                         .resizable()
                                                         .frame(width: 36, height: 36)
                                                         .offset(x: 4)
+                                                        .accessibilityLabel("coin")
                                                     Text("+\(questionViewModel.coinsWhenWin)")
                                                         .foregroundColor(Color.customOrange)
                                                         .fontWeight(.semibold)
                                                         .font(.system(size: 19))
+                                                        .accessibilityHint("coin")
                                                 }
                                                 .offset(x: -4)
                                                 .environment(\.layoutDirection, .leftToRight)
@@ -107,6 +113,7 @@ struct WinView: View {
                                         .offset(x: 35)
                                 })
                                 .offset(y: -48)
+                                .environment(\.layoutDirection, .leftToRight)
                         }
                 }
                 .padding(.horizontal, 16)
@@ -114,13 +121,20 @@ struct WinView: View {
                 VStack {
                     if !questionViewModel.isLastLevel {
                         Button("Next Level") {
-                            nextAction()
+                            withAnimation(.easeIn) {
+                                showWinView.toggle()
+                                isAppear.toggle()
+                            }
+                            questionViewModel.gotoNextLevel()
                         }
                         .buttonStyle(OrangeButton())
                     }
                     
                     Button("Quit") {
-                        quitAction()
+                        withAnimation(.easeIn) {
+                            showWinView.toggle()
+                            isAppear.toggle()
+                        }
                     }
                     .buttonStyle(OrangeButton())
                 }
@@ -128,15 +142,19 @@ struct WinView: View {
                 
             }
         }
+        .scaleEffect(isAppear ? 1 : 0)
+        .opacity(isAppear ? 1 : 0)
+        .onAppear{
+            withAnimation(.easeIn) {
+                isAppear = true
+            }
+        }
     }
 }
 
 struct WinView_Previews: PreviewProvider {
     static var previews: some View {
-        WinView(
-            nextAction: {},
-            quitAction: {}
-        )
+        WinView(showWinView: .constant(false))
         .environmentObject(QuestionViewModel())
     }
 }

@@ -24,5 +24,23 @@
 // enum cases
 "City" = "المدينة";
 "Food" = "الطعام";
+"Country" = "الدولة";
+"Animal" = "الحيوان";
+"Name" = "الشخص";
 
 "abcdefghijklmnopqrstuvwxyz" = "ابتثحخدذرزسشصضطظعغفقكلمنهويءئؤةى";
+
+
+// for Accessability
+
+// label
+"app logo" = "شعار التطبيق";
+"coin" = "عملة";
+"Start Page" = "صفحة البداية";
+
+// hint
+"back button" = "زر الرجوع";
+"Question" = "سؤال";
+"Question answer" = "جواب السؤال";
+"add letter to the answer" = "إضافة الحرف للجواب";
+"delete letter from the answer" = "حذف الحرف من الجواب";

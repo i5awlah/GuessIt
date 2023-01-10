@@ -26,6 +26,7 @@ struct StartView: View {
                     Image("logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .accessibilityLabel("app logo")
                     
                     Spacer()
                     

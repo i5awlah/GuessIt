@@ -41,19 +41,9 @@ struct LevelView: View {
             .edgesIgnoringSafeArea(.top)
             
             
-            WinView {
-                withAnimation(.easeIn) {
-                    showWinView.toggle()
-                }
-                questionViewModel.gotoNextLevel()
-            } quitAction: {
-                withAnimation(.easeIn) {
-                    showWinView.toggle()
-                }
-            }
-            .scaleEffect(showWinView ? 1 : 0)
-            .opacity(showWinView ? 1 : 0)
-            
+            if showWinView {
+                WinView(showWinView: $showWinView)
+            } 
             
         }
     }
@@ -87,23 +77,27 @@ extension LevelView {
                                     .bold()
                                     .font(.title3)
                                     .foregroundColor(.white)
+                                    .accessibilityRemoveTraits(.isImage)
                             }
                             .onTapGesture {
                                 dismiss()
                             }
+                            .accessibilityLabel("Start Page")
+                            .accessibilityHint("back button")
                     }
                     .overlay(alignment: .trailing) {
-                        HStack(spacing: 0) {
-                            Image("goldenCoin")
+                        
+                        HStack {
+                            Image("coinimage")
                                 .resizable()
-                                .frame(width: 65, height: 65)
+                                .frame(width: 35, height: 35)
                             
                             Text("\(questionViewModel.coin)")
                                 .font(.title3)
                                 .foregroundColor(.babyYellow)
-                                .padding(.leading, -10)
                         }
-                        .padding(.leading, -10)
+                        .accessibilityLabel("coin")
+                        .accessibilityValue("\(questionViewModel.coin)")
                         .environment(\.layoutDirection, .leftToRight)
                     }
                     .padding(.horizontal, 16)
@@ -122,7 +116,7 @@ extension LevelView {
             Text("Guess the \(questionViewModel.questions[questionViewModel.levelNumber].questionType.rawValue.localized)")
                 .foregroundColor(.white)
                 .font(.questionFont(for: questionViewModel.appLanguage))
-            
+                .accessibilityHint("Question")
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(height: 175)
@@ -150,6 +144,8 @@ extension LevelView {
                             Text(questionViewModel.userAnswer[i].letter)
                                 .font(.letterFont(for: questionViewModel.appLanguage))
                                 .foregroundColor(Color.darkGreen)
+                                .accessibilityAddTraits(.isButton)
+                                .accessibilityHint("delete letter from the answer")
                         }
                     }
                     .onTapGesture {
@@ -181,6 +177,8 @@ extension LevelView {
                             Text(item.letter)
                                 .font(.letterFont(for: questionViewModel.appLanguage))
                             .foregroundColor(.letterLavender)
+                            .accessibilityAddTraits(.isButton)
+                            .accessibilityHint("add letter to the answer")
                     }
                     .onTapGesture {
                         if questionViewModel.userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber].answer.count {
