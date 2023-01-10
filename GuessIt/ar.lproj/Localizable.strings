@@ -9,6 +9,7 @@
 
 // start view
 "Play" = "العب";
+"You have completed all levels" = "لقد أكملت جميع المستويات";
 
 // level view
 "LEVEL%@" = "المستوى%@";
@@ -16,7 +17,7 @@
 
 
 // win view
-"Excellent !" = "ممتاز !";
+"Excellent!" = "ممتاز!";
 "Next Level" = "المستوى التالي";
 "Quit" = "خروج";
 

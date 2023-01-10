@@ -10,47 +10,78 @@ import SwiftUI
 struct StartView: View {
     
     @EnvironmentObject var questionViewModel: QuestionViewModel
+    @State private var goPlay = false
+    @State private var showTextAlert = false
     
     var body: some View {
-
-        ZStack{
-            (AngularGradient (
-                gradient: Gradient(colors: [Color(.gray)]),
-                           center: .topLeading,
-                           angle: .degrees(180+45)))
-             .ignoresSafeArea()
-            
-            VStack{
-                Image("logo")
-                    .resizable()
-                    .frame (width: 267, height:327)
-                    .padding(100)
+        
+        NavigationStack {
+            ZStack {
+                Color.linearGradient
+                    .ignoresSafeArea()
                 
+                VStack {
+                    Spacer()
                     
-                
+                    Image("logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                    
+                    Spacer()
+                    
+                    Button {
+                        if questionViewModel.isLastLevel {
+                            withAnimation {
+                                showTextAlert = true
+                            }
+                            withAnimation(Animation.linear.delay(2)) {
+                                showTextAlert = false
+                            }
+                        } else {
+                            goPlay = true
+                        }
+                        
+                    } label: {
+                        RoundedRectangle (cornerRadius: 16)
+                            .fill(Color("backYellow"))
+                            .frame(height: 48)
+                            .overlay {
+                                HStack {
+                                    Image(systemName: "play.fill")
+                                    Text ("Play")
+                                }
+                                .bold()
+                                .font(.system(size: 25))
+                                .foregroundColor (.white)
+                            }
+                            .padding(.horizontal, 32)
+                    }
+                    
+                    Text("You have completed all levels")
+                        .bold()
+                        .foregroundColor(.black)
+                        .padding(5)
+                        .background(Color.darkLavender.opacity(0.5))
+                        .offset(y: showTextAlert ? 0 : -30)
+                        .opacity(showTextAlert ? 1 : 0)
 
-                Button (
-                    action: {}, label: {
-                Text ("Play")
-                .font(.title2.weight (.semibold))
-                .foregroundColor (.white)
-                .frame (width: 265, height:44) .background (Color.customOrange)
-                .mask(RoundedRectangle (cornerRadius: 16, style: .continuous))
-
+                    
+                    Spacer()
                 }
-                        )
-//                Image(systemName: "play.fill")
-//                    .foregroundColor (.white)
-//                    .frame (width: 197, height:44)
+                .padding(.horizontal, 48)
+                
             }
-            
+            .navigationDestination(isPresented: $goPlay) {
+                LevelView()
+                    .navigationBarBackButtonHidden(true)
+            }
         }
     }
-
-struct StartView_Previews: PreviewProvider {
-    static var previews: some View {
-        StartView()
-            .environmentObject(QuestionViewModel())
+    
+    struct StartView_Previews: PreviewProvider {
+        static var previews: some View {
+            StartView()
+                .environmentObject(QuestionViewModel())
+        }
     }
 }
-                }
