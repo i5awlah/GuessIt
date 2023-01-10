@@ -57,6 +57,7 @@ struct StartView: View {
                             }
                             .padding(.horizontal, 32)
                     }
+                    .accessibility(sortPriority: 10)
                     
                     Text("You have completed all levels")
                         .bold()
@@ -70,6 +71,7 @@ struct StartView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 48)
+                .accessibilityElement(children: .contain)
                 
             }
             .navigationDestination(isPresented: $goPlay) {

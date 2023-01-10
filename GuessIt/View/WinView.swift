@@ -35,6 +35,7 @@ struct WinView: View {
                         .bold()
                         .font(.custom("Arial", size: 55))
                         .foregroundColor (Color.customOrange)
+                        .accessibility(sortPriority: 10)
                     
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color.white)
@@ -141,6 +142,7 @@ struct WinView: View {
                 
                 
             }
+            .accessibilityElement(children: .contain)
         }
         .scaleEffect(isAppear ? 1 : 0)
         .opacity(isAppear ? 1 : 0)

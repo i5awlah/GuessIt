@@ -96,6 +96,7 @@ extension LevelView {
                                 .font(.title3)
                                 .foregroundColor(.babyYellow)
                         }
+                        .accessibilityElement(children: .combine)
                         .accessibilityLabel("coin")
                         .accessibilityValue("\(questionViewModel.coin)")
                         .environment(\.layoutDirection, .leftToRight)
@@ -116,7 +117,7 @@ extension LevelView {
             Text("Guess the \(questionViewModel.questions[questionViewModel.levelNumber].questionType.rawValue.localized)")
                 .foregroundColor(.white)
                 .font(.questionFont(for: questionViewModel.appLanguage))
-                .accessibilityHint("Question")
+                .accessibility(sortPriority: 2)
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(height: 175)
@@ -127,9 +128,12 @@ extension LevelView {
                         .minimumScaleFactor(0.01)
                         .lineLimit(1)
                         .padding(.horizontal, 5)
+                        .accessibility(sortPriority: 1)
                 }
                 .padding(.horizontal, 16)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityHint("Question")
     }
     
     var answers: some View {
