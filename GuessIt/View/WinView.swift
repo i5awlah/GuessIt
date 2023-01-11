@@ -35,7 +35,7 @@ struct WinView: View {
                         .bold()
                         .font(.custom("Arial", size: 55))
                         .foregroundColor (Color.customOrange)
-                        .accessibility(sortPriority: 10)
+                        .accessibility(sortPriority: 0)
                     
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color.white)
@@ -58,10 +58,12 @@ struct WinView: View {
                                                 .lineLimit(1)
                                                 .padding(.horizontal, 16)
                                                 .accessibilityHint("Question")
+                                                .accessibility(sortPriority: 1)
                                         Text(questionViewModel.questions[questionViewModel.levelNumber].answer)
                                             .font(.custom("Arial", size: 30))
                                             .foregroundColor(Color.customOrange)
                                             .accessibilityHint("Question answer")
+                                            .accessibility(sortPriority: 2)
                                     }
                                 }
                         }
@@ -129,6 +131,7 @@ struct WinView: View {
                             questionViewModel.gotoNextLevel()
                         }
                         .buttonStyle(OrangeButton())
+                        .accessibility(sortPriority: 3)
                     }
                     
                     Button("Quit") {
@@ -137,6 +140,7 @@ struct WinView: View {
                             isAppear.toggle()
                         }
                     }
+                    .accessibility(sortPriority: 4)
                     .buttonStyle(OrangeButton())
                 }
                 

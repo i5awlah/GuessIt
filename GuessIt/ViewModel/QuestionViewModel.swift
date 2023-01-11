@@ -5,7 +5,7 @@
 //  Created by Khawlah on 05/01/2023.
 //
 
-import Foundation
+import SwiftUI
 
 class QuestionViewModel: ObservableObject {
     @Published var questions: [Question]
@@ -37,6 +37,8 @@ class QuestionViewModel: ObservableObject {
             UserDefaults.standard.set(isWinLevel, forKey: "isWinLevel")
         }
     }
+    
+    @Published var showWinView = false
     
     let coinsWhenWin = 10
     let coinsWhenHint = 5
@@ -123,5 +125,21 @@ class QuestionViewModel: ObservableObject {
         coin -= coinsWhenHint
         let letterHint = "\(questions[levelNumber].answer[userAnswer.count])"
         userAnswer.append(Letter(letter: letterHint))
+        
+        // check if fill all letters
+        if userAnswer.count == questions[levelNumber].answer.count {
+            //handleCorrectAnswer
+            SoundManager.shared.playSound(soundType: .successSound)
+            print("Win!!")
+            // to disable any click
+            isWinLevel = true
+            // show Excellent view
+            withAnimation(.easeIn) {
+                showWinView.toggle()
+            }
+            increaseCoins()
+            checkIfLastLevel()
+            //handleCorrectAnswer
+        }
     }
 }

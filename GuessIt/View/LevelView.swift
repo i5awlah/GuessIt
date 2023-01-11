@@ -15,7 +15,6 @@ struct LevelView: View {
     @EnvironmentObject var questionViewModel: QuestionViewModel
     
     @State var attempts: Int = 0
-    @State var showWinView = false
     @State var presentAlert = false
     
     var body: some View {
@@ -49,13 +48,15 @@ struct LevelView: View {
                         }
                     }
                     .buttonStyle(OrangeButton())
+                    .disabled(questionViewModel.coin < questionViewModel.coinsWhenHint)
                 }
             }
             .edgesIgnoringSafeArea(.top)
+            .disabled(presentAlert ? true : false)
+            .accessibilityHidden(presentAlert || questionViewModel.showWinView ? true : false)
             
-            
-            if showWinView {
-                WinView(showWinView: $showWinView)
+            if questionViewModel.showWinView {
+                WinView(showWinView: $questionViewModel.showWinView)
             }
             
             if presentAlert {
@@ -146,6 +147,7 @@ extension LevelView {
                         .lineLimit(1)
                         .padding(.horizontal, 5)
                         .accessibility(sortPriority: 1)
+                        .accessibilityLabel(getEmojiLabel())
                 }
                 .padding(.horizontal, 16)
         }
@@ -241,7 +243,7 @@ extension LevelView {
         questionViewModel.isWinLevel = true
         // show Excellent view
         withAnimation(.easeIn) {
-            showWinView.toggle()
+            questionViewModel.showWinView.toggle()
         }
         questionViewModel.increaseCoins()
         questionViewModel.checkIfLastLevel()
@@ -253,6 +255,16 @@ extension LevelView {
             self.attempts += 1
             questionViewModel.userAnswer.removeAll()
             questionViewModel.randomLetter.forEach({ $0.isClicked = false })
+        }
+    }
+    
+    func getEmojiLabel() -> String {
+        let letters = "ابتثحخدذرزسشصضطظعغفقكلمنهويءئؤةى"
+        let count = letters.filter({ questionViewModel.questions[questionViewModel.levelNumber].emojis.contains(String($0))}).count
+        if count == 0 && questionViewModel.appLanguage == "ar" {
+            return String(questionViewModel.questions[questionViewModel.levelNumber].emojis.reversed())
+        } else {
+            return questionViewModel.questions[questionViewModel.levelNumber].emojis
         }
     }
 }

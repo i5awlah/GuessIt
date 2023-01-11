@@ -58,6 +58,8 @@ struct StartView: View {
                             .padding(.horizontal, 32)
                     }
                     .accessibility(sortPriority: 10)
+                    .disabled(UIAccessibility.isVoiceOverRunning && questionViewModel.isLastLevel ? true : false)
+                    .accessibilityHint(UIAccessibility.isVoiceOverRunning && questionViewModel.isLastLevel ? "You have completed all levels" : "")
                     
                     Text("You have completed all levels")
                         .bold()

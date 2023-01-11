@@ -23,6 +23,7 @@ struct CustomAlert: View {
                     .font(.custom("Arial", size: 26))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
+                    .accessibilitySortPriority(0)
                 
                 HStack(spacing: 16) {
                     
@@ -39,6 +40,7 @@ struct CustomAlert: View {
                                     .foregroundColor (.navbarColor)
                             }
                     }
+                    .accessibilitySortPriority(2)
                     
                     Button {
                         presentAlert = false
@@ -56,6 +58,7 @@ struct CustomAlert: View {
                                     .foregroundColor(.customOrange)
                             }
                     }
+                    .accessibilitySortPriority(1)
 
                 }
             }
@@ -71,6 +74,7 @@ struct CustomAlert: View {
                     })
             )
             .padding(.horizontal, 48)
+            .accessibilityElement(children: .contain)
             Spacer()
         }
         .frame(width: UIScreen.main.bounds.width)
