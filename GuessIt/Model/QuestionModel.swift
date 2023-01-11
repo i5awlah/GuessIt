@@ -27,7 +27,7 @@ extension Question {
           Question(questionType: .city, emojis: "🌊🦉", answer: "Seoul")
         , Question(questionType: .food, emojis: "🧔🏻‍♂️ + go", answer: "Mango")
         , Question(questionType: .country, emojis: "🍫🌧", answer: "Bahrain")
-        , Question(questionType: .food, emojis: "🧊🧴", answer: "Ice Cream")
+        , Question(questionType: .food, emojis: "🧊🧴", answer: "IceCream")
         , Question(questionType: .animal, emojis: "🌙🔑", answer: "Monkey")
         , Question(questionType: .country, emojis: "O + 🧔🏻‍♂️", answer: "Oman")
         , Question(questionType: .food, emojis: "🚗✉️", answer: "Carmel")
@@ -35,9 +35,9 @@ extension Question {
         , Question(questionType: .country, emojis: "🌶️", answer: "Chile")
         , Question(questionType: .food, emojis: "🪑 + Y", answer: "Cherry")
         , Question(questionType: .country, emojis: "🐳 + S", answer: "Wales")
-        , Question(questionType: .food, emojis: "🔥🍫", answer: "Hot Chocolate")
+//        , Question(questionType: .food, emojis: "🔥🍫", answer: "HotChocolate")
         , Question(questionType: .country, emojis: "🦃", answer: "Turkey")
-        , Question(questionType: .food, emojis: "🧀🍰", answer: "Cheese cake")
+//        , Question(questionType: .food, emojis: "🧀🍰", answer: "CheeseCake")
     ]
     
     static var arabicQuestions = [
@@ -49,27 +49,13 @@ extension Question {
         Question(questionType: .city, emojis: "🦔 + ة", answer: "القنفذة"),
         Question(questionType: .food, emojis: "🦆 + يخ", answer: "بطيخ"),
         Question(questionType: .country, emojis: "📷 + ون", answer: "كاميرون"),
-        Question(questionType: .name, emojis: "أس + 💦", answer: "اسماء"),
+        Question(questionType: .name, emojis: "أس + 💦", answer: "أسماء"),
         Question(questionType: .city, emojis: "👵🏻", answer: "جدة"),
         Question(questionType: .country, emojis: "🐱 + ر", answer: "قطر"),
         Question(questionType: .food, emojis: "ك + 🍚", answer: "كرز"),
-        Question(questionType: .city, emojis: "أم +💀💀💀", answer: "امالجماجم"),
+        Question(questionType: .city, emojis: "أم +💀💀💀", answer: "أمالجماجم"),
         Question(questionType: .city, emojis: "👸🏼", answer: "شقراء"),
         Question(questionType: .city, emojis: "🌞🌞", answer: "الشماسية"),
-        Question(questionType: .city, emojis: "🌱🌱🌱🌱", answer: "حقل"),
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        Question(questionType: .city, emojis: "🌱🌱🌱🌱", answer: "حقل")
     ]
 }
