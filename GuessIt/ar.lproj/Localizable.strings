@@ -15,7 +15,11 @@
 "LEVEL" = "المستوى";
 "Guess the %@" = "خمن اسم %@";
 "Hint" = "تلميح";
-
+"Ask Friends" = "اسأل الأصدقاء";
+"Can you guess the name of %@ from this emoji (%@) ?" = "هل تستطيع تخمين اسم %@ من خلال هذه الرموز التعبيرية (%@) ؟";
+"Can you guess the name of" = "هل تستطيع تخمين اسم";
+"from this emoji" = "من خلال هذه الرموز التعبيرية";
+"?" = "؟";
 
 // win view
 "Excellent!" = "ممتاز!";

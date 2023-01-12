@@ -41,18 +41,46 @@ struct LevelView: View {
                 }
                 
                 if !questionViewModel.isWinLevel {
-                    Button {
-                        // haptic
-                        HapticManager.instance.notification(type: .warning)
-                        presentAlert.toggle()
-                    } label: {
-                        HStack {
-                            Image("lightLamp")
-                            Text("Hint")
+                    HStack {
+                        Button {
+                            // haptic
+                            HapticManager.instance.notification(type: .warning)
+                            presentAlert.toggle()
+                        } label: {
+                            HStack {
+                                Image("lightLamp")
+                                Text("Hint")
+                            }
                         }
+                        .bold()
+                        .font(.textInButtonFont(for: questionViewModel.appLanguage))
+                        .foregroundColor (.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(Color.customOrange)
+                        .cornerRadius(16)
+                        .frame(height: 44)
+                        .disabled(questionViewModel.coin < questionViewModel.coinsWhenHint)
+                        
+                        Button {
+                            // haptic
+                            HapticManager.instance.notification(type: .warning)
+                            questionViewModel.shareQuestion()
+                        } label: {
+                            HStack {
+                                Text("Ask Friends")
+                            }
+                        }
+                        .bold()
+                        .font(.textInButtonFont(for: questionViewModel.appLanguage))
+                        .foregroundColor (.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 44)
+                        .background(Color.customOrange)
+                        .cornerRadius(16)
+                        .frame(height: 44)
                     }
-                    .buttonStyle(OrangeButton())
-                    .disabled(questionViewModel.coin < questionViewModel.coinsWhenHint)
+                    .padding(.horizontal, 16)
                 }
             }
             .edgesIgnoringSafeArea(.top)
@@ -151,7 +179,7 @@ extension LevelView {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(height: UIScreen.main.bounds.height * 0.2)
-                .frame(width: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.4 : .infinity)
+                .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.4 : .infinity)
                 .overlay {
                     Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                         .font(.system(size: 60))

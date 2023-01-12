@@ -197,4 +197,14 @@ class QuestionViewModel: ObservableObject {
             return questions[levelNumber].emojis
         }
     }
+    
+    func shareQuestion() {
+        let AV = UIActivityViewController(activityItems: [
+            "Can you guess the name of".localized + " \(questions[levelNumber].questionType.rawValue.localized) " + "from this emoji".localized + " (" + "\(questions[levelNumber].emojis)" + ")" + "?".localized
+        ], applicationActivities: nil)
+        let scenes = UIApplication.shared.connectedScenes
+           let windowScene = scenes.first as? UIWindowScene
+            
+           windowScene?.keyWindow?.rootViewController?.present(AV, animated: true, completion: nil)
+    }
 }
