@@ -80,7 +80,8 @@ struct LevelView: View {
                         .cornerRadius(16)
                         .frame(height: 44)
                     }
-                    .padding(.horizontal, 16)
+                    .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
+                    .padding(.horizontal, UIDevice.isIPad ? 0 : 16)
                 }
             }
             .edgesIgnoringSafeArea(.top)
@@ -179,7 +180,7 @@ extension LevelView {
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
                 .frame(height: UIScreen.main.bounds.height * 0.2)
-                .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.4 : .infinity)
+                .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
                 .overlay {
                     Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                         .font(.system(size: 60))
