@@ -84,12 +84,18 @@ extension LevelView {
             .fill(Color.navbarColor)
             .frame(height: 104)
             .overlay(alignment: .bottom) {
-                Text("LEVEL\(String(questionViewModel.levelNumber+1))")
+                HStack(spacing: 0) {
+                    Text("LEVEL")
+                    Text("\(questionViewModel.levelNumber+1)")
+                }
                     .bold()
                     .font(.titleFont(for: questionViewModel.appLanguage))
                     .foregroundColor(.white)
                     .frame(height: 65)
                     .frame(maxWidth: .infinity)
+                    .accessibilityElement(children: .combine)
+                    .accessibilityLabel("LEVEL")
+                    .accessibilityValue("\(questionViewModel.levelNumber+1)")
                     .overlay(alignment: .leading) {
                         Circle()
                             .fill(Color("backYellow"))

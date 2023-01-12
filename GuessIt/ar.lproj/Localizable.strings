@@ -12,7 +12,7 @@
 "You have completed all levels" = "لقد أكملت جميع المستويات";
 
 // level view
-"LEVEL%@" = "المستوى%@";
+"LEVEL" = "المستوى";
 "Guess the %@" = "خمن اسم %@";
 "Hint" = "تلميح";
 
