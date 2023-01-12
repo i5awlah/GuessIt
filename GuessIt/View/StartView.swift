@@ -39,6 +39,8 @@ struct StartView: View {
                                 showTextAlert = false
                             }
                         } else {
+                            // haptic
+                            HapticManager.instance.impact(style: .light)
                             goPlay = true
                         }
                         

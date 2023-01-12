@@ -28,6 +28,8 @@ struct CustomAlert: View {
                 HStack(spacing: 16) {
                     
                     Button {
+                        // haptic
+                        HapticManager.instance.impact(style: .light)
                         questionViewModel.useHint()
                         presentAlert = false
                     } label: {
@@ -43,6 +45,8 @@ struct CustomAlert: View {
                     .accessibilitySortPriority(2)
                     
                     Button {
+                        // haptic
+                        HapticManager.instance.impact(style: .light)
                         presentAlert = false
                     } label: {
                         RoundedRectangle(cornerRadius: 16)

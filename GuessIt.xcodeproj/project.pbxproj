@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		901961F8296FE0D800B6187B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901961F7296FE0D800B6187B /* HapticManager.swift */; };
 		90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DED2966C66E00F9FC01 /* GuessItApp.swift */; };
 		90321DF22966C66F00F9FC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90321DF12966C66F00F9FC01 /* Assets.xcassets */; };
 		90321DF52966C66F00F9FC01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90321DF42966C66F00F9FC01 /* Preview Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		901961F7296FE0D800B6187B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		90321DEA2966C66E00F9FC01 /* GuessIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90321DED2966C66E00F9FC01 /* GuessItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessItApp.swift; sourceTree = "<group>"; };
 		90321DF12966C66F00F9FC01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				90D10B8E296AAD4600E8945E /* Extensions.swift */,
+				901961F7296FE0D800B6187B /* HapticManager.swift */,
 				90D10B9C296CBAC800E8945E /* SoundManager.swift */,
 				90D10BA2296CBBBF00E8945E /* wrongSound.mp3 */,
 				90D10B9F296CBAF200E8945E /* successSound.mp3 */,
@@ -227,6 +230,7 @@
 				90D10B93296B585300E8945E /* LetterModel.swift in Sources */,
 				90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */,
 				90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */,
+				901961F8296FE0D800B6187B /* HapticManager.swift in Sources */,
 				90D10B9D296CBAC800E8945E /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

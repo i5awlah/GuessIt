@@ -124,6 +124,8 @@ struct WinView: View {
                 VStack {
                     if !questionViewModel.isLastLevel {
                         Button("Next Level") {
+                            // haptic
+                            HapticManager.instance.impact(style: .light)
                             withAnimation(.easeIn) {
                                 showWinView.toggle()
                                 isAppear.toggle()
@@ -135,6 +137,8 @@ struct WinView: View {
                     }
                     
                     Button("Quit") {
+                        // haptic
+                        HapticManager.instance.impact(style: .light)
                         withAnimation(.easeIn) {
                             showWinView.toggle()
                             isAppear.toggle()

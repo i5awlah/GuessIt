@@ -31,6 +31,8 @@ struct LevelView: View {
                 if !questionViewModel.isLastLevel && questionViewModel.isWinLevel {
                     Spacer()
                     Button("Next Level") {
+                        // haptic
+                        HapticManager.instance.impact(style: .light)
                         questionViewModel.gotoNextLevel()
                     }
                     .buttonStyle(OrangeButton())
@@ -40,6 +42,8 @@ struct LevelView: View {
                 
                 if !questionViewModel.isWinLevel {
                     Button {
+                        // haptic
+                        HapticManager.instance.notification(type: .warning)
                         presentAlert.toggle()
                     } label: {
                         HStack {
@@ -98,6 +102,8 @@ extension LevelView {
                                     .accessibilityRemoveTraits(.isImage)
                             }
                             .onTapGesture {
+                                // haptic
+                                HapticManager.instance.impact(style: .light)
                                 dismiss()
                             }
                             .accessibilityLabel("Start Page")
@@ -173,6 +179,8 @@ extension LevelView {
                     }
                     .onTapGesture {
                         if questionViewModel.userAnswer.indices.contains(i) {
+                            // haptic
+                            HapticManager.instance.impact(style: .light)
                             questionViewModel.userAnswer[i].isClicked = false
                             questionViewModel.userAnswer.remove(at: i)
                         }
@@ -218,6 +226,9 @@ extension LevelView {
     
     
     func handleAddingLetterToAnswer(item: Letter) {
+        // haptic
+        HapticManager.instance.impact(style: .medium)
+        
         item.isClicked = true
         questionViewModel.userAnswer.append(item)
         
