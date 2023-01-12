@@ -39,6 +39,7 @@ class QuestionViewModel: ObservableObject {
     }
     
     @Published var showWinView = false
+    @Published var attempts: Int = 0
     
     let coinsWhenWin = 10
     let coinsWhenHint = 5
@@ -140,6 +141,60 @@ class QuestionViewModel: ObservableObject {
             increaseCoins()
             checkIfLastLevel()
             //handleCorrectAnswer
+        }
+    }
+    
+    func handleAddingLetterToAnswer(item: Letter) {
+        // haptic
+        HapticManager.instance.impact(style: .medium)
+        
+        item.isClicked = true
+        userAnswer.append(item)
+        
+        // check if user fill all letters
+        if userAnswer.count == questions[levelNumber].answer.count {
+            
+            var fullUserAnswer = ""
+            userAnswer.forEach({ fullUserAnswer += $0.letter })
+            
+            // check if user answer and quastion answer is sama
+            if fullUserAnswer.lowercased() == questions[levelNumber].answer.lowercased() {
+                handleCorrectAnswer()
+            } else {
+                handleWrongAnswer()
+            }
+        }
+    }
+    
+    func handleCorrectAnswer() {
+        SoundManager.shared.playSound(soundType: .successSound)
+        print("Win!!")
+        // to disable any click
+        isWinLevel = true
+        // show Excellent view
+        withAnimation(.easeIn) {
+            showWinView.toggle()
+        }
+        increaseCoins()
+        checkIfLastLevel()
+    }
+    
+    func handleWrongAnswer() {
+        SoundManager.shared.playSound(soundType: .wrongSound)
+        withAnimation(.default) {
+            self.attempts += 1
+            userAnswer.removeAll()
+            randomLetter.forEach({ $0.isClicked = false })
+        }
+    }
+    
+    func getEmojiLabel() -> String {
+        let letters = "ابتثحخدذرزسشصضطظعغفقكلمنهويءئؤةى"
+        let count = letters.filter({ questions[levelNumber].emojis.contains(String($0))}).count
+        if count == 0 && appLanguage == "ar" {
+            return String(questions[levelNumber].emojis.reversed())
+        } else {
+            return questions[levelNumber].emojis
         }
     }
 }

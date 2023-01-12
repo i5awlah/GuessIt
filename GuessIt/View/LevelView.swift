@@ -14,7 +14,7 @@ struct LevelView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var questionViewModel: QuestionViewModel
     
-    @State var attempts: Int = 0
+    
     @State var presentAlert = false
     
     var body: some View {
@@ -153,7 +153,7 @@ extension LevelView {
                         .lineLimit(1)
                         .padding(.horizontal, 5)
                         .accessibility(sortPriority: 1)
-                        .accessibilityLabel(getEmojiLabel())
+                        .accessibilityLabel(questionViewModel.getEmojiLabel())
                 }
                 .padding(.horizontal, 16)
         }
@@ -187,7 +187,7 @@ extension LevelView {
                     }
             }
         }
-        .modifier(Shake(animatableData: CGFloat(attempts)))
+        .modifier(Shake(animatableData: CGFloat(questionViewModel.attempts)))
     }
     
     var lettersGrid: some View {
@@ -199,7 +199,7 @@ extension LevelView {
                 GridItem(.fixed(63)),
                 GridItem(.fixed(63))
             ],
-            spacing: 20) {
+            spacing: 10) {
                 ForEach(questionViewModel.randomLetter, id: \.id) { item in
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color("customGrey"))
@@ -213,69 +213,11 @@ extension LevelView {
                     }
                     .onTapGesture {
                         if questionViewModel.userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber].answer.count {
-                            handleAddingLetterToAnswer(item: item)
+                            questionViewModel.handleAddingLetterToAnswer(item: item)
                         }
                     }
                     .opacity(item.isClicked ? 0 : 1)
             }
-        }
-    }
-}
-
-extension LevelView {
-    
-    
-    func handleAddingLetterToAnswer(item: Letter) {
-        // haptic
-        HapticManager.instance.impact(style: .medium)
-        
-        item.isClicked = true
-        questionViewModel.userAnswer.append(item)
-        
-        // check if user fill all letters
-        if questionViewModel.userAnswer.count == questionViewModel.questions[questionViewModel.levelNumber].answer.count {
-            
-            var fullUserAnswer = ""
-            questionViewModel.userAnswer.forEach({ fullUserAnswer += $0.letter })
-            
-            // check if user answer and quastion answer is sama
-            if fullUserAnswer.lowercased() == questionViewModel.questions[questionViewModel.levelNumber].answer.lowercased() {
-                handleCorrectAnswer()
-            } else {
-                handleWrongAnswer()
-            }
-        }
-    }
-    
-    func handleCorrectAnswer() {
-        SoundManager.shared.playSound(soundType: .successSound)
-        print("Win!!")
-        // to disable any click
-        questionViewModel.isWinLevel = true
-        // show Excellent view
-        withAnimation(.easeIn) {
-            questionViewModel.showWinView.toggle()
-        }
-        questionViewModel.increaseCoins()
-        questionViewModel.checkIfLastLevel()
-    }
-    
-    func handleWrongAnswer() {
-        SoundManager.shared.playSound(soundType: .wrongSound)
-        withAnimation(.default) {
-            self.attempts += 1
-            questionViewModel.userAnswer.removeAll()
-            questionViewModel.randomLetter.forEach({ $0.isClicked = false })
-        }
-    }
-    
-    func getEmojiLabel() -> String {
-        let letters = "ابتثحخدذرزسشصضطظعغفقكلمنهويءئؤةى"
-        let count = letters.filter({ questionViewModel.questions[questionViewModel.levelNumber].emojis.contains(String($0))}).count
-        if count == 0 && questionViewModel.appLanguage == "ar" {
-            return String(questionViewModel.questions[questionViewModel.levelNumber].emojis.reversed())
-        } else {
-            return questionViewModel.questions[questionViewModel.levelNumber].emojis
         }
     }
 }
