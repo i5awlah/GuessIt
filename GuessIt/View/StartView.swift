@@ -26,6 +26,7 @@ struct StartView: View {
                     Image("logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.width * 0.5 + 64 : .infinity)
                         .accessibilityLabel("app logo")
                     
                     Spacer()
@@ -48,6 +49,7 @@ struct StartView: View {
                         RoundedRectangle (cornerRadius: 16)
                             .fill(Color("backYellow"))
                             .frame(height: 48)
+                            .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.width * 0.5 + 64 : .infinity)
                             .overlay {
                                 HStack {
                                     Image(systemName: "play.fill")

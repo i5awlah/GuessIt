@@ -97,6 +97,12 @@ extension Font {
 // .font(.custom("", size: 32))
 // .font(.custom("Geeza Pro", size: ))
 
+extension UIDevice {
+    static var isIPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+}
+
 struct Shake: GeometryEffect {
     var amount: CGFloat = 10
     var shakesPerUnit = 3

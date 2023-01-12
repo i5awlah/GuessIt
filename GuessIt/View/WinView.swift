@@ -70,7 +70,7 @@ struct WinView: View {
                 }
                 .padding(.top, 71)
                 .padding(.bottom, 26)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.width * 0.5 + 64 : .infinity)
                 .background {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color.yellowLinearGradient)

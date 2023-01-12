@@ -144,7 +144,8 @@ extension LevelView {
                 .accessibility(sortPriority: 2)
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)
-                .frame(height: 175)
+                .frame(height: UIScreen.main.bounds.height * 0.2)
+                .frame(width: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.4 : .infinity)
                 .overlay {
                     Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                         .font(.system(size: 60))
@@ -167,7 +168,7 @@ extension LevelView {
             ForEach(0..<questionViewModel.questions[questionViewModel.levelNumber].answer.count, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 8)
                     .fill(questionViewModel.userAnswer.indices.contains(i) ? Color.lightGreen : Color.babyLavender)
-                    .frame(width: 36, height: 36)
+                    .frame(width: UIDevice.isIPad ? 96 : 36, height: UIDevice.isIPad ? 96 : 36)
                     .overlay {
                         if questionViewModel.userAnswer.indices.contains(i) {
                             Text(questionViewModel.userAnswer[i].letter)
@@ -193,17 +194,17 @@ extension LevelView {
     var lettersGrid: some View {
         LazyVGrid(
             columns: [
-                GridItem(.fixed(63)),
-                GridItem(.fixed(63)),
-                GridItem(.fixed(63)),
-                GridItem(.fixed(63)),
-                GridItem(.fixed(63))
+                GridItem(.fixed(UIDevice.isIPad ? UIScreen.main.bounds.height * 0.12 - 15 : UIScreen.main.bounds.width * 0.2 - 15)),
+                GridItem(.fixed(UIDevice.isIPad ? UIScreen.main.bounds.height * 0.12 - 15 : UIScreen.main.bounds.width * 0.2 - 15)),
+                GridItem(.fixed(UIDevice.isIPad ? UIScreen.main.bounds.height * 0.12 - 15 : UIScreen.main.bounds.width * 0.2 - 15)),
+                GridItem(.fixed(UIDevice.isIPad ? UIScreen.main.bounds.height * 0.12 - 15 : UIScreen.main.bounds.width * 0.2 - 15)),
+                GridItem(.fixed(UIDevice.isIPad ? UIScreen.main.bounds.height * 0.12 - 15 : UIScreen.main.bounds.width * 0.2 - 15))
             ],
             spacing: 10) {
                 ForEach(questionViewModel.randomLetter, id: \.id) { item in
                     RoundedRectangle(cornerRadius: 8)
                         .fill(Color("customGrey"))
-                        .frame(height: 63)
+                        .frame(height: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.12 - 15 : UIScreen.main.bounds.width * 0.2 - 15)
                         .overlay {
                             Text(item.letter)
                                 .font(.letterFont(for: questionViewModel.appLanguage))

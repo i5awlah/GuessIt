@@ -16,7 +16,7 @@ struct OrangeButton: ButtonStyle {
             .bold()
             .font(.textInButtonFont(for: questionViewModel.appLanguage))
             .foregroundColor (.white)
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.width * 0.5 + 64 : .infinity)
             .frame(height: 44)
             .background(Color.customOrange)
             .cornerRadius(16)
