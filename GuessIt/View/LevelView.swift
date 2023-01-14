@@ -202,7 +202,8 @@ extension LevelView {
             ForEach(0..<questionViewModel.questions[questionViewModel.levelNumber].answer.count, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 8)
                     .fill(questionViewModel.userAnswer.indices.contains(i) ? Color.lightGreen : Color.babyLavender)
-                    .frame(width: UIDevice.isIPad ? 96 : 36, height: UIDevice.isIPad ? 96 : 36)
+                    .frame(height: UIDevice.isIPad ? 96 : 36)
+                    .frame(maxWidth: UIDevice.isIPad ? 96 : 36)
                     .overlay {
                         if questionViewModel.userAnswer.indices.contains(i) {
                             Text(questionViewModel.userAnswer[i].letter)
@@ -222,6 +223,7 @@ extension LevelView {
                     }
             }
         }
+        .padding(.horizontal, 16)
         .modifier(Shake(animatableData: CGFloat(questionViewModel.attempts)))
     }
     
