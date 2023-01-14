@@ -60,7 +60,6 @@ struct LevelView: View {
                         .background(Color.customOrange)
                         .cornerRadius(16)
                         .frame(height: 44)
-                        .disabled(questionViewModel.coin < questionViewModel.coinsWhenHint)
                         
                         Button {
                             // haptic

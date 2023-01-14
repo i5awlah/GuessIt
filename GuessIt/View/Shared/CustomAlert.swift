@@ -19,51 +19,75 @@ struct CustomAlert: View {
             Spacer()
             VStack(spacing: 32) {
                 
-                Text("Do you want a hint for".localized + " \(questionViewModel.coinsWhenHint) " + "coins?".localized)
-                    .font(.custom("Arial", size: 26))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .accessibilitySortPriority(0)
-                
-                HStack(spacing: 16) {
+                if questionViewModel.coin < questionViewModel.coinsWhenHint {
+                    Text("You do not have enough coins")
+                        .font(.custom("Arial", size: 26))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .accessibilitySortPriority(0)
                     
                     Button {
                         // haptic
                         HapticManager.instance.impact(style: .light)
-                        questionViewModel.useHint()
                         presentAlert = false
                     } label: {
                         RoundedRectangle(cornerRadius: 16)
                             .fill(Color.customOrange)
                             .frame(width: 112, height: 44)
                             .overlay {
-                                Text("Yes")
+                                Text("Cancel")
                                     .font(.textInShortButtonFont(for: questionViewModel.appLanguage))
                                     .foregroundColor (.navbarColor)
                             }
                     }
                     .accessibilitySortPriority(2)
+                } else {
+                    Text("Do you want a hint for".localized + " \(questionViewModel.coinsWhenHint) " + "coins?".localized)
+                        .font(.custom("Arial", size: 26))
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .accessibilitySortPriority(0)
                     
-                    Button {
-                        // haptic
-                        HapticManager.instance.impact(style: .light)
-                        presentAlert = false
-                    } label: {
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.customOrange)
-                            .frame(width: 112, height: 44)
-                            .mask {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke((Color.white), lineWidth: 3)
-                            }
-                            .overlay {
-                                Text("No")
-                                    .font(.textInShortButtonFont(for: questionViewModel.appLanguage))
-                                    .foregroundColor(.customOrange)
-                            }
-                    }
-                    .accessibilitySortPriority(1)
+                    HStack(spacing: 16) {
+                        
+                        Button {
+                            // haptic
+                            HapticManager.instance.impact(style: .light)
+                            questionViewModel.useHint()
+                            presentAlert = false
+                        } label: {
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.customOrange)
+                                .frame(width: 112, height: 44)
+                                .overlay {
+                                    Text("Yes")
+                                        .font(.textInShortButtonFont(for: questionViewModel.appLanguage))
+                                        .foregroundColor (.navbarColor)
+                                }
+                        }
+                        .accessibilitySortPriority(2)
+                        
+                        Button {
+                            // haptic
+                            HapticManager.instance.impact(style: .light)
+                            presentAlert = false
+                        } label: {
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(Color.customOrange)
+                                .frame(width: 112, height: 44)
+                                .mask {
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke((Color.white), lineWidth: 3)
+                                }
+                                .overlay {
+                                    Text("No")
+                                        .font(.textInShortButtonFont(for: questionViewModel.appLanguage))
+                                        .foregroundColor(.customOrange)
+                                }
+                        }
+                        .accessibilitySortPriority(1)
 
+                    }
                 }
             }
             .padding(.horizontal, 32)
