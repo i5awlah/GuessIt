@@ -63,6 +63,8 @@ class QuestionViewModel: ObservableObject {
         
         self.isLastLevel = UserDefaults.standard.bool(forKey: "isLastLevel")
         self.isWinLevel = UserDefaults.standard.bool(forKey: "isWinLevel")
+        
+        checkIfLastLevel()
         print("coin: \(coin)")
         print("levelNumber: \(levelNumber)")
         getRandomLetter()
@@ -103,6 +105,8 @@ class QuestionViewModel: ObservableObject {
         if !questions.indices.contains(levelNumber+1) {
             isLastLevel = true
             print("Finish All level!")
+        } else {
+            isLastLevel = false
         }
     }
     
