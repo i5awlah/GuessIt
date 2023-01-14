@@ -38,6 +38,7 @@ extension Question {
 //        , Question(questionType: .food, emojis: "🔥🍫", answer: "HotChocolate")
         , Question(questionType: .country, emojis: "🦃", answer: "Turkey")
 //        , Question(questionType: .food, emojis: "🧀🍰", answer: "CheeseCake")
+          , Question(questionType: .country, emojis: "Ja + 🍳", answer: "Japan")
     ]
     
     static var arabicQuestions = [
@@ -53,9 +54,21 @@ extension Question {
         Question(questionType: .city, emojis: "👵🏻", answer: "جدة"),
         Question(questionType: .country, emojis: "🐱 + ر", answer: "قطر"),
         Question(questionType: .food, emojis: "ك + 🍚", answer: "كرز"),
-        Question(questionType: .city, emojis: "أم +💀💀💀", answer: "أمالجماجم"),
+        //Question(questionType: .city, emojis: "أم +💀💀💀", answer: "أمالجماجم"),
         Question(questionType: .city, emojis: "👸🏼", answer: "شقراء"),
         Question(questionType: .city, emojis: "🌞🌞", answer: "الشماسية"),
-        Question(questionType: .city, emojis: "🌱🌱🌱🌱", answer: "حقل")
+        Question(questionType: .city, emojis: "🌱🌱🌱🌱", answer: "حقل"),
+        Question(questionType: .city, emojis: "🏚️🩸", answer: "دمشق"),
+        Question(questionType: .food, emojis: "2️⃣👨🏻", answer: "منتو"),
+        Question(questionType: .city, emojis: "ت + 👛", answer: "تبوك"),
+        Question(questionType: .animal, emojis: "ذ + 🚪", answer: "ذباب"),
+        Question(questionType: .city, emojis: "🐎🐎", answer: "فرسان"),
+        Question(questionType: .country, emojis: "غ + 🙋🏻‍♀️", answer: "غانا"),
+        Question(questionType: .food, emojis: "💿💿", answer: "قرصان"),
+        Question(questionType: .city, emojis: "📫 + ة", answer: "بريدة"),
+        Question(questionType: .food, emojis: "ج +🪶", answer: "جريش"),
+        Question(questionType: .food, emojis: "4️⃣🏡", answer: "بيتيفور")
+        
+        
     ]
 }
