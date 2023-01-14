@@ -32,21 +32,26 @@ struct Question {
 
 extension Question {
     static var englishQuestions = [
-          Question(questionType: .city, emojis: "🌊🦉", answer: "Seoul")
+        Question(questionType: .city, emojis: "🌊🦉", answer: "Seoul")
         , Question(questionType: .food, emojis: "🧔🏻‍♂️ + go", answer: "Mango")
         , Question(questionType: .country, emojis: "🍫🌧", answer: "Bahrain")
-        , Question(questionType: .food, emojis: "🧊🧴", answer: "IceCream")
+        , Question(questionType: .food, emojis: "🧊🧴", answer: "Ice Cream")
         , Question(questionType: .animal, emojis: "🌙🔑", answer: "Monkey")
         , Question(questionType: .country, emojis: "O + 🧔🏻‍♂️", answer: "Oman")
         , Question(questionType: .food, emojis: "🚗✉️", answer: "Carmel")
         , Question(questionType: .city, emojis: "🐁🐮", answer: "Moscow")
+        , Question(questionType: .animal, emojis: "🌧 + no", answer: "Rhino")
         , Question(questionType: .country, emojis: "🌶️", answer: "Chile")
         , Question(questionType: .food, emojis: "🪑 + Y", answer: "Cherry")
+        , Question(questionType: .animal, emojis: "✒️ + G + 🥇", answer: "Penguin")
         , Question(questionType: .country, emojis: "🐳 + S", answer: "Wales")
-//        , Question(questionType: .food, emojis: "🔥🍫", answer: "HotChocolate")
+        , Question(questionType: .animal, emojis: "📷 + L", answer: "Camel ")
+        , Question(questionType: .food, emojis: "🔥🍫", answer: "Hot Chocolate")
         , Question(questionType: .country, emojis: "🦃", answer: "Turkey")
-//        , Question(questionType: .food, emojis: "🧀🍰", answer: "CheeseCake")
-          , Question(questionType: .country, emojis: "Ja + 🍳", answer: "Japan")
+        , Question(questionType: .animal, emojis: "🅱️👂🏻", answer: "Bear")
+        , Question(questionType: .food, emojis: "🧀🍰", answer: "Cheese Cake")
+        , Question(questionType: .country, emojis: "Ja + 🍳", answer: "Japan")
+        , Question(questionType: .animal, emojis: "🍳 + da", answer: "Panda")
     ]
     
     static var arabicQuestions = [
