@@ -19,7 +19,15 @@ enum QuestionType: String {
 struct Question {
     let questionType: QuestionType
     let emojis: String
+    let fullAnswer: String
     let answer: String
+    
+    init(questionType: QuestionType, emojis: String, answer: String) {
+        self.questionType = questionType
+        self.emojis = emojis
+        self.fullAnswer = answer
+        self.answer = answer.filter({ $0 != " " })
+    }
 }
 
 extension Question {

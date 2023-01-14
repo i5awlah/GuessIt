@@ -59,7 +59,7 @@ struct WinView: View {
                                                 .padding(.horizontal, 16)
                                                 .accessibilityHint("Question")
                                                 .accessibility(sortPriority: 1)
-                                        Text(questionViewModel.questions[questionViewModel.levelNumber].answer)
+                                        Text(questionViewModel.questions[questionViewModel.levelNumber].fullAnswer)
                                             .font(.custom("Arial", size: 30))
                                             .foregroundColor(Color.customOrange)
                                             .accessibilityHint("Question answer")
