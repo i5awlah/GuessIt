@@ -25,4 +25,4 @@ Provide a game for adults and children who wants to entertain and educate so the
 
 
 ## Challenge Summary
-![image](https://github.com/i5awlah/GuessIt/blob/main/Attachments/Challenge%20Summary.png)
+![image](https://github.com/i5awlah/GuessIt/blob/main/Attachments/Challenge%20Summary.JPG)
