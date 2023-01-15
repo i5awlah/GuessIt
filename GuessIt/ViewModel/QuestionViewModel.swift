@@ -131,21 +131,8 @@ class QuestionViewModel: ObservableObject {
         let letterHint = "\(questions[levelNumber].answer[userAnswer.count])"
         userAnswer.append(Letter(letter: letterHint))
         
-        // check if fill all letters
-        if userAnswer.count == questions[levelNumber].answer.count {
-            //handleCorrectAnswer
-            SoundManager.shared.playSound(soundType: .successSound)
-            print("Win!!")
-            // to disable any click
-            isWinLevel = true
-            // show Excellent view
-            withAnimation(.easeIn) {
-                showWinView.toggle()
-            }
-            increaseCoins()
-            checkIfLastLevel()
-            //handleCorrectAnswer
-        }
+        // check if user fill all letters
+        handleFillAllLetters()
     }
     
     func handleAddingLetterToAnswer(item: Letter) {
@@ -156,8 +143,11 @@ class QuestionViewModel: ObservableObject {
         userAnswer.append(item)
         
         // check if user fill all letters
+        handleFillAllLetters()
+    }
+    
+    func handleFillAllLetters() {
         if userAnswer.count == questions[levelNumber].answer.count {
-            
             var fullUserAnswer = ""
             userAnswer.forEach({ fullUserAnswer += $0.letter })
             
