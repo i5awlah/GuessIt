@@ -38,7 +38,7 @@ extension Question {
         , Question(questionType: .food, emojis: "🧊🧴", answer: "Ice Cream")
         , Question(questionType: .animal, emojis: "🌙🔑", answer: "Monkey")
         , Question(questionType: .country, emojis: "O + 🧔🏻‍♂️", answer: "Oman")
-        , Question(questionType: .food, emojis: "🚗✉️", answer: "Carmel")
+        , Question(questionType: .food, emojis: "🚗✉️", answer: "Caramel")
         , Question(questionType: .city, emojis: "🐁🐮", answer: "Moscow")
         , Question(questionType: .animal, emojis: "🌧 + no", answer: "Rhino")
         , Question(questionType: .country, emojis: "🌶️", answer: "Chile")
@@ -51,6 +51,17 @@ extension Question {
         , Question(questionType: .animal, emojis: "🅱️👂🏻", answer: "Bear")
         , Question(questionType: .food, emojis: "🧀🍰", answer: "Cheese Cake")
         , Question(questionType: .country, emojis: "Ja + 🍳", answer: "Japan")
+        , Question(questionType: .animal, emojis: "🐋🐋", answer: "Wales")
+        , Question(questionType: .food, emojis: "🥛🤝", answer: "Milkshake")
+        , Question(questionType: .animal, emojis: "✂️", answer: "Cat")
+        , Question(questionType: .country, emojis: "⛓️🅰️", answer: "China")
+        , Question(questionType: .animal, emojis: "🅱️👂🏻", answer: "BEAR")
+        , Question(questionType: .country, emojis: "👔1️⃣", answer: "Taiwan")
+        , Question(questionType: .food, emojis: "🧑🏻‍🍳🔑 ", answer: "Cookie")
+        , Question(questionType: .animal, emojis: "✔️🔑", answer: "DONKEY")
+        , Question(questionType: .food, emojis: "💥🌽", answer: "Popcorn")
+        , Question(questionType: .animal, emojis: "👔👧🏻", answer: "TIGER")
+        , Question(questionType: .food, emojis: " 🅾️🏃🏻‍♂️G", answer: "Orange")
         , Question(questionType: .animal, emojis: "🍳 + da", answer: "Panda")
     ]
     
@@ -76,15 +87,19 @@ extension Question {
         Question(questionType: .food, emojis: "👀🥚", answer: "بيض عيون"),
         Question(questionType: .city, emojis: "🏚️🩸", answer: "دمشق"),
         Question(questionType: .food, emojis: "2️⃣👨🏻", answer: "منتو"),
-        Question(questionType: .city, emojis: "✨👨🏻👨🏻👨🏻", answer: "رجال ألمع"),
-        Question(questionType: .city, emojis: "ت + 👛", answer: "تبوك"),
         Question(questionType: .animal, emojis: "ذ + 🚪", answer: "ذباب"),
         Question(questionType: .food, emojis: "💰🚙", answer: "جيب التاجر"),
         Question(questionType: .city, emojis: "🐎🐎", answer: "فرسان"),
-        Question(questionType: .country, emojis: "غ + 🙋🏻‍♀️", answer: "غانا"),
         Question(questionType: .food, emojis: "💿💿", answer: "قرصان"),
         Question(questionType: .city, emojis: "📫 + ة", answer: "بريدة"),
         Question(questionType: .food, emojis: "ج +🪶", answer: "جريش"),
+        Question(questionType: .city, emojis: "✨👨🏻👨🏻👨🏻", answer: "رجال ألمع"),
+        Question(questionType: .food, emojis: "💦🚿", answer: "شاورما"),
+        Question(questionType: .country, emojis: "🥛🥛", answer: "لبنان"),
+        Question(questionType: .food, emojis: "ك + 🚪", answer: "كباب"),
+        Question(questionType: .city, emojis: "ت + 👛", answer: "تبوك"),
+        Question(questionType: .food, emojis: "👩🏻‍🦱", answer: "فلافل"),
+        Question(questionType: .country, emojis: "غ + 🙋🏻‍♀️", answer: "غانا"),
         Question(questionType: .food, emojis: "4️⃣🏡", answer: "بيتيفور")
     ]
 }
