@@ -24,7 +24,7 @@ Provide a game for adults and children who wants to entertain and educate so the
 ## Demo
 * [Deemo](https://drive.google.com/file/d/1WtgraPt3HNuV6xQNEqmULG71euW9krE7/view?usp=share_link)
 * [Deemo with Voive Over](https://drive.google.com/file/d/1wL5TL6XGzGppnA7AjG-nyTUv7AvzPByT/view?usp=share_link)
-
+* [Deemo with Arabic language](https://drive.google.com/file/d/1QcHgxvsIAxHlXM5EYiOuJDZIXtVdTEDw/view?usp=share_link)
 
 ## Challenge Summary
 ![image](https://github.com/i5awlah/GuessIt/blob/main/Attachments/Challenge%20Summary.JPG)
