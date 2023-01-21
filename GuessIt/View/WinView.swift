@@ -53,6 +53,7 @@ struct WinView: View {
                                     VStack {
                                         Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                                             .font(.system(size: 72))
+                                            .foregroundColor(.black)
                                                 .scaledToFit()
                                                 .minimumScaleFactor(0.01)
                                                 .lineLimit(1)

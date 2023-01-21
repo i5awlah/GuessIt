@@ -183,6 +183,7 @@ extension LevelView {
                 .overlay {
                     Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
                         .font(.system(size: 60))
+                        .foregroundColor(.black)
                         .scaledToFit()
                         .minimumScaleFactor(0.01)
                         .lineLimit(1)
