@@ -33,6 +33,7 @@
 /* Begin PBXFileReference section */
 		901181EA297F16420024ABC1 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
 		901181EC297F1C630024ABC1 /* LevelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelList.swift; sourceTree = "<group>"; };
+		901181EE297F1EF40024ABC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		901961F7296FE0D800B6187B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		90321DEA2966C66E00F9FC01 /* GuessIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90321DED2966C66E00F9FC01 /* GuessItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessItApp.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		90321DEC2966C66E00F9FC01 /* GuessIt */ = {
 			isa = PBXGroup;
 			children = (
+				901181EE297F1EF40024ABC1 /* Info.plist */,
 				90321E022966C7FB00F9FC01 /* Model */,
 				90321E012966C7EC00F9FC01 /* View */,
 				90321E032966C80A00F9FC01 /* ViewModel */,
@@ -390,7 +392,7 @@
 				DEVELOPMENT_TEAM = DMXBNDQ3Y6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = GuessIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -420,7 +422,7 @@
 				DEVELOPMENT_TEAM = DMXBNDQ3Y6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = GuessIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;

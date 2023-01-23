@@ -19,9 +19,6 @@ struct LevelCell: View {
                 Text("\(i)")
             }
             .bold()
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel("Level")
-            .accessibilityValue("\(i)")
             
             Text("\(questionViewModel.questions[i-1].emojis)")
                 .opacity(i-1 > questionViewModel.levelNumber ? 0.2 : 1)
@@ -35,6 +32,7 @@ struct LevelCell: View {
         .foregroundColor(.letterLavender)
         .padding()
         .padding(.bottom, 36)
+        .accessibilityElement(children: .combine)
         .overlay(alignment: .bottom) {
             Circle()
                 .fill(

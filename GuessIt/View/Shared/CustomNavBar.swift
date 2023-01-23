@@ -32,7 +32,7 @@ struct CustomNavBar: View {
                 .frame(height: 65)
                 .frame(maxWidth: .infinity)
                 .accessibilityElement(children: .combine)
-                .accessibilityLabel(title)
+                .accessibilityLabel(title.localized)
                 .accessibilityValue(
                     showAccessibilityLevelValue ?
                     "\(questionViewModel.selectedLevel+1)" : ""
@@ -54,7 +54,7 @@ struct CustomNavBar: View {
                             questionViewModel.userAnswer.removeAll()
                             dismiss()
                         }
-                        .accessibilityLabel(backLabel)
+                        .accessibilityLabel(backLabel.localized)
                         .accessibilityHint("back button")
                 }
                 .overlay(alignment: .trailing) {
