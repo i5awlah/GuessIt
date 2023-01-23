@@ -62,6 +62,11 @@ extension Question {
         , Question(questionType: .animal, emojis: "👔👧🏻", answer: "Tiger")
         , Question(questionType: .food, emojis: " 🅾️🏃🏻‍♂️G", answer: "Orange")
         , Question(questionType: .animal, emojis: "🍳 + da", answer: "Panda")
+        , Question(questionType: .food, emojis: "🟦🐻 + Y", answer: "Blueberry")
+        , Question(questionType: .country, emojis: "🦠💰", answer: "Germany")
+        , Question(questionType: .city, emojis: "👜👨‍👦", answer: "Baghdad")
+        , Question(questionType: .food, emojis: "🥵🐶", answer: "Hotdog")
+        , Question(questionType: .country, emojis: "🔔🏋🏻", answer: "Belgium")
     ]
     
     static var arabicQuestions = [
