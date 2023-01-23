@@ -25,22 +25,22 @@ struct LevelView: View {
             VStack(spacing: 24) {
                 navBar
                 questionCard
-                answers.disabled(questionViewModel.isWinLevel)
+                answers//.disabled(questionViewModel.isWinLevel)
                 
+                lettersGrid
+//                if !questionViewModel.isLastLevel && questionViewModel.isWinLevel {
+//                    Spacer()
+//                    Button("Next Level") {
+//                        // haptic
+//                        HapticManager.instance.impact(style: .light)
+//                        questionViewModel.gotoNextLevel()
+//                    }
+//                    .buttonStyle(OrangeButton())
+//                } else {
+//                    lettersGrid
+//                }
                 
-                if !questionViewModel.isLastLevel && questionViewModel.isWinLevel {
-                    Spacer()
-                    Button("Next Level") {
-                        // haptic
-                        HapticManager.instance.impact(style: .light)
-                        questionViewModel.gotoNextLevel()
-                    }
-                    .buttonStyle(OrangeButton())
-                } else {
-                    lettersGrid
-                }
-                
-                if !questionViewModel.isWinLevel {
+              //  if !questionViewModel.isWinLevel {
                     HStack {
                         Button {
                             // haptic
@@ -81,7 +81,7 @@ struct LevelView: View {
                     }
                     .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
                     .padding(.horizontal, UIDevice.isIPad ? 0 : 16)
-                }
+             //   }
             }
             .edgesIgnoringSafeArea(.top)
             .disabled(presentAlert ? true : false)
@@ -114,7 +114,7 @@ extension LevelView {
             .overlay(alignment: .bottom) {
                 HStack(spacing: 0) {
                     Text("LEVEL")
-                    Text("\(questionViewModel.levelNumber+1)")
+                    Text("\(questionViewModel.selectedLevel+1)")
                 }
                     .bold()
                     .font(.titleFont(for: questionViewModel.appLanguage))
@@ -123,7 +123,7 @@ extension LevelView {
                     .frame(maxWidth: .infinity)
                     .accessibilityElement(children: .combine)
                     .accessibilityLabel("LEVEL")
-                    .accessibilityValue("\(questionViewModel.levelNumber+1)")
+                    .accessibilityValue("\(questionViewModel.selectedLevel+1)")
                     .overlay(alignment: .leading) {
                         Circle()
                             .fill(Color("backYellow"))
@@ -138,6 +138,7 @@ extension LevelView {
                             .onTapGesture {
                                 // haptic
                                 HapticManager.instance.impact(style: .light)
+                                questionViewModel.userAnswer.removeAll()
                                 dismiss()
                             }
                             .accessibilityLabel("Start Page")
@@ -172,7 +173,7 @@ extension LevelView {
     
     var questionCard: some View {
         VStack {
-            Text("Guess the \(questionViewModel.questions[questionViewModel.levelNumber].questionType.rawValue.localized)")
+            Text("Guess the \(questionViewModel.questions[questionViewModel.selectedLevel].questionType.rawValue.localized)")
                 .foregroundColor(.white)
                 .font(.questionFont(for: questionViewModel.appLanguage))
                 .accessibility(sortPriority: 2)
@@ -181,7 +182,7 @@ extension LevelView {
                 .frame(height: UIScreen.main.bounds.height * 0.2)
                 .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
                 .overlay {
-                    Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
+                    Text(questionViewModel.questions[questionViewModel.selectedLevel].emojis)
                         .font(.system(size: 60))
                         .foregroundColor(.black)
                         .scaledToFit()
@@ -200,7 +201,7 @@ extension LevelView {
     var answers: some View {
         HStack {
             
-            ForEach(0..<questionViewModel.questions[questionViewModel.levelNumber].answer.count, id: \.self) { i in
+            ForEach(0..<questionViewModel.questions[questionViewModel.selectedLevel].answer.count, id: \.self) { i in
                 RoundedRectangle(cornerRadius: 8)
                     .fill(questionViewModel.userAnswer.indices.contains(i) ? Color.lightGreen : Color.babyLavender)
                     .frame(height: UIDevice.isIPad ? 96 : 36)
@@ -250,7 +251,7 @@ extension LevelView {
                             .accessibilityHint("add letter to the answer")
                     }
                     .onTapGesture {
-                        if questionViewModel.userAnswer.count < questionViewModel.questions[questionViewModel.levelNumber].answer.count {
+                        if questionViewModel.userAnswer.count < questionViewModel.questions[questionViewModel.selectedLevel].answer.count {
                             questionViewModel.handleAddingLetterToAnswer(item: item)
                         }
                     }

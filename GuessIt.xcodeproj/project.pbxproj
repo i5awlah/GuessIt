@@ -16,6 +16,8 @@
 		90321E002966C7DF00F9FC01 /* WinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DFF2966C7DF00F9FC01 /* WinView.swift */; };
 		90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321E042966C84900F9FC01 /* QuestionModel.swift */; };
 		90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321E062966C93800F9FC01 /* QuestionViewModel.swift */; };
+		9085E4E5297C1C3B001C46B2 /* LevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085E4E4297C1C3B001C46B2 /* LevelsView.swift */; };
+		909909FD297C4FD30057DD48 /* LevelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909909FC297C4FD30057DD48 /* LevelCell.swift */; };
 		90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B8E296AAD4600E8945E /* Extensions.swift */; };
 		90D10B93296B585300E8945E /* LetterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D10B92296B585300E8945E /* LetterModel.swift */; };
 		90D10B96296BED8000E8945E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 90D10B98296BED8000E8945E /* Localizable.strings */; };
@@ -37,6 +39,8 @@
 		90321DFF2966C7DF00F9FC01 /* WinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinView.swift; sourceTree = "<group>"; };
 		90321E042966C84900F9FC01 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		90321E062966C93800F9FC01 /* QuestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewModel.swift; sourceTree = "<group>"; };
+		9085E4E4297C1C3B001C46B2 /* LevelsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsView.swift; sourceTree = "<group>"; };
+		909909FC297C4FD30057DD48 /* LevelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCell.swift; sourceTree = "<group>"; };
 		90D10B8E296AAD4600E8945E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		90D10B92296B585300E8945E /* LetterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterModel.swift; sourceTree = "<group>"; };
 		90D10B97296BED8000E8945E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			children = (
 				90321DED2966C66E00F9FC01 /* GuessItApp.swift */,
 				90321DFB2966C79100F9FC01 /* StartView.swift */,
+				9085E4E4297C1C3B001C46B2 /* LevelsView.swift */,
+				909909FC297C4FD30057DD48 /* LevelCell.swift */,
 				90321DFD2966C7B700F9FC01 /* LevelView.swift */,
 				90321DFF2966C7DF00F9FC01 /* WinView.swift */,
 				90321DF12966C66F00F9FC01 /* Assets.xcassets */,
@@ -220,12 +226,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				909909FD297C4FD30057DD48 /* LevelCell.swift in Sources */,
 				90D10BC6296E15F900E8945E /* CustomAlert.swift in Sources */,
 				90321DFC2966C79100F9FC01 /* StartView.swift in Sources */,
 				90321E002966C7DF00F9FC01 /* WinView.swift in Sources */,
 				90D10B9B296C636C00E8945E /* ButtonModifier.swift in Sources */,
 				90321DFE2966C7B700F9FC01 /* LevelView.swift in Sources */,
 				90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */,
+				9085E4E5297C1C3B001C46B2 /* LevelsView.swift in Sources */,
 				90321E072966C93800F9FC01 /* QuestionViewModel.swift in Sources */,
 				90D10B93296B585300E8945E /* LetterModel.swift in Sources */,
 				90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */,
@@ -369,7 +377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GuessIt/Preview Content\"";
 				DEVELOPMENT_TEAM = DMXBNDQ3Y6;
 				ENABLE_PREVIEWS = YES;
@@ -384,7 +392,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.khawlah.GuessIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -399,7 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GuessIt/Preview Content\"";
 				DEVELOPMENT_TEAM = DMXBNDQ3Y6;
 				ENABLE_PREVIEWS = YES;
@@ -414,7 +422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.khawlah.GuessIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

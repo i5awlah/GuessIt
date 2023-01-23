@@ -51,7 +51,7 @@ struct WinView: View {
                                 .shadow(color: Color.customOrange ,radius: 3, y: 1)
                                 .overlay {
                                     VStack {
-                                        Text(questionViewModel.questions[questionViewModel.levelNumber].emojis)
+                                        Text(questionViewModel.questions[questionViewModel.selectedLevel].emojis)
                                             .font(.system(size: 72))
                                             .foregroundColor(.black)
                                                 .scaledToFit()
@@ -60,7 +60,7 @@ struct WinView: View {
                                                 .padding(.horizontal, 16)
                                                 .accessibilityHint("Question")
                                                 .accessibility(sortPriority: 1)
-                                        Text(questionViewModel.questions[questionViewModel.levelNumber].fullAnswer)
+                                        Text(questionViewModel.questions[questionViewModel.selectedLevel].fullAnswer)
                                             .font(.custom("Arial", size: 30))
                                             .foregroundColor(Color.customOrange)
                                             .accessibilityHint("Question answer")
@@ -115,6 +115,10 @@ struct WinView: View {
                                             }
                                         }
                                         .offset(x: 35)
+                                        .opacity(
+                                            questionViewModel.selectedLevel == questionViewModel.levelNumber ?
+                                            1 : 0
+                                        )
                                 })
                                 .offset(y: -48)
                                 .environment(\.layoutDirection, .leftToRight)
@@ -144,6 +148,7 @@ struct WinView: View {
                             showWinView.toggle()
                             isAppear.toggle()
                         }
+                        questionViewModel.gotoNextLevel()
                     }
                     .accessibility(sortPriority: 4)
                     .buttonStyle(OrangeButton())

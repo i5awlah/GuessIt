@@ -10,8 +10,7 @@ import SwiftUI
 struct StartView: View {
     
     @EnvironmentObject var questionViewModel: QuestionViewModel
-    @State private var goPlay = false
-    @State private var showTextAlert = false
+    @State private var goLevelsView = false
     
     var body: some View {
         
@@ -32,18 +31,9 @@ struct StartView: View {
                     Spacer()
                     
                     Button {
-                        if questionViewModel.isLastLevel {
-                            withAnimation {
-                                showTextAlert = true
-                            }
-                            withAnimation(Animation.linear.delay(2)) {
-                                showTextAlert = false
-                            }
-                        } else {
-                            // haptic
-                            HapticManager.instance.impact(style: .light)
-                            goPlay = true
-                        }
+                        // haptic
+                        HapticManager.instance.impact(style: .light)
+                        goLevelsView = true
                         
                     } label: {
                         RoundedRectangle (cornerRadius: 16)
@@ -62,17 +52,6 @@ struct StartView: View {
                             .padding(.horizontal, 32)
                     }
                     .accessibility(sortPriority: 10)
-                    .disabled(UIAccessibility.isVoiceOverRunning && questionViewModel.isLastLevel ? true : false)
-                    .accessibilityHint(UIAccessibility.isVoiceOverRunning && questionViewModel.isLastLevel ? "You have completed all levels" : "")
-                    
-                    Text("You have completed all levels")
-                        .bold()
-                        .foregroundColor(.black)
-                        .padding(5)
-                        .background(Color.darkLavender.opacity(0.5))
-                        .offset(y: showTextAlert ? 0 : -30)
-                        .opacity(showTextAlert ? 1 : 0)
-
                     
                     Spacer()
                 }
@@ -80,8 +59,8 @@ struct StartView: View {
                 .accessibilityElement(children: .contain)
                 
             }
-            .navigationDestination(isPresented: $goPlay) {
-                LevelView()
+            .navigationDestination(isPresented: $goLevelsView) {
+                LevelsView()
                     .navigationBarBackButtonHidden(true)
             }
         }

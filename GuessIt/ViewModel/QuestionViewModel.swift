@@ -41,6 +41,10 @@ class QuestionViewModel: ObservableObject {
     @Published var showWinView = false
     @Published var attempts: Int = 0
     
+    @Published var selectedLevel: Int
+    @Published var goLevel = false
+
+    
     let coinsWhenWin = 10
     let coinsWhenHint = 5
     
@@ -64,23 +68,32 @@ class QuestionViewModel: ObservableObject {
         self.isLastLevel = UserDefaults.standard.bool(forKey: "isLastLevel")
         self.isWinLevel = UserDefaults.standard.bool(forKey: "isWinLevel")
         
+        self.selectedLevel = 0
+        
+        if self.isLastLevel {
+            self.selectedLevel = UserDefaults.standard.integer(forKey: "levelNumber") - 1
+        } else {
+            self.selectedLevel = UserDefaults.standard.integer(forKey: "levelNumber")
+        }
+        
+        
         checkIfLastLevel()
         print("coin: \(coin)")
         print("levelNumber: \(levelNumber)")
         getRandomLetter()
         
-        if isWinLevel {
-            questions[levelNumber].answer.forEach({ userAnswer.append( Letter(letter: String($0)) ) })
-        }
+//        if isWinLevel {
+//            questions[selectedLevel].answer.forEach({ userAnswer.append( Letter(letter: String($0)) ) })
+//        }
     }
     
     func getRandomLetter() {
         randomLetter.removeAll()
         // Add each letter of answer to array
-        questions[levelNumber].answer.forEach({ self.randomLetter.append(Letter(letter: String($0))) })
+        questions[selectedLevel].answer.forEach({ self.randomLetter.append(Letter(letter: String($0))) })
         
         // Calc remind letters
-        let remindLetterCount = 20 - questions[levelNumber].answer.count
+        let remindLetterCount = 20 - questions[selectedLevel].answer.count
         let remindRandomLetters = randomLetters(length: remindLetterCount)
         
         // Add Remind Random Letters to array
@@ -102,7 +115,7 @@ class QuestionViewModel: ObservableObject {
     }
     
     func checkIfLastLevel() {
-        if !questions.indices.contains(levelNumber+1) {
+        if !questions.indices.contains(selectedLevel+1) {
             isLastLevel = true
             print("Finish All level!")
         } else {
@@ -111,12 +124,19 @@ class QuestionViewModel: ObservableObject {
     }
     
     func gotoNextLevel() {
+        print("selectedLevel: \(selectedLevel)")
         print("levelNumber: \(levelNumber)")
-        
         // go to next level
-        levelNumber += 1
+        if selectedLevel == levelNumber {
+            levelNumber += 1
+        }
+        if !isLastLevel {
+            selectedLevel += 1
+        }
+        
         isWinLevel = false
-        print("+levelNumber: \(levelNumber)")
+        print("+selectedLevel: \(selectedLevel)")
+        print("levelNumber: \(levelNumber)")
         getRandomLetter()
         
         // remove previos userAnswer
@@ -128,7 +148,7 @@ class QuestionViewModel: ObservableObject {
     func useHint() {
         // sub coin
         coin -= coinsWhenHint
-        let letterHint = "\(questions[levelNumber].answer[userAnswer.count])"
+        let letterHint = "\(questions[selectedLevel].answer[userAnswer.count])"
         userAnswer.append(Letter(letter: letterHint))
         
         // check if user fill all letters
@@ -147,12 +167,12 @@ class QuestionViewModel: ObservableObject {
     }
     
     func handleFillAllLetters() {
-        if userAnswer.count == questions[levelNumber].answer.count {
+        if userAnswer.count == questions[selectedLevel].answer.count {
             var fullUserAnswer = ""
             userAnswer.forEach({ fullUserAnswer += $0.letter })
             
             // check if user answer and quastion answer is sama
-            if fullUserAnswer.lowercased() == questions[levelNumber].answer.lowercased() {
+            if fullUserAnswer.lowercased() == questions[selectedLevel].answer.lowercased() {
                 handleCorrectAnswer()
             } else {
                 handleWrongAnswer()
@@ -169,7 +189,13 @@ class QuestionViewModel: ObservableObject {
         withAnimation(.easeIn) {
             showWinView.toggle()
         }
-        increaseCoins()
+        if selectedLevel == levelNumber {
+            print("increaseCoins")
+            increaseCoins()
+        } else {
+            print("Not -")
+        }
+        
         checkIfLastLevel()
     }
     
@@ -184,17 +210,17 @@ class QuestionViewModel: ObservableObject {
     
     func getEmojiLabel() -> String {
         let letters = "ابتثحخدذرزسشصضطظعغفقكلمنهويءئؤةى"
-        let count = letters.filter({ questions[levelNumber].emojis.contains(String($0))}).count
+        let count = letters.filter({ questions[selectedLevel].emojis.contains(String($0))}).count
         if count == 0 && appLanguage == "ar" {
-            return String(questions[levelNumber].emojis.reversed())
+            return String(questions[selectedLevel].emojis.reversed())
         } else {
-            return questions[levelNumber].emojis
+            return questions[selectedLevel].emojis
         }
     }
     
     func shareQuestion() {
         let AV = UIActivityViewController(activityItems: [
-            "Can you guess the name of".localized + " \(questions[levelNumber].questionType.rawValue.localized) " + "from this emoji".localized + " (" + "\(getEmojiLabel())" + ")" + "?".localized
+            "Can you guess the name of".localized + " \(questions[selectedLevel].questionType.rawValue.localized) " + "from this emoji".localized + " (" + "\(getEmojiLabel())" + ")" + "?".localized
         ], applicationActivities: nil)
         let scenes = UIApplication.shared.connectedScenes
            let windowScene = scenes.first as? UIWindowScene
