@@ -23,24 +23,14 @@ struct LevelView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 24) {
-                navBar
+                CustomNavBar(title: "LEVEL", backLabel: "LEVELS", accessibilityLevelValue: "\(questionViewModel.selectedLevel+1)")
+                Text("LEVEL")
+                Text("\(questionViewModel.selectedLevel+1)")
+                
                 questionCard
-                answers//.disabled(questionViewModel.isWinLevel)
+                answers
                 
                 lettersGrid
-//                if !questionViewModel.isLastLevel && questionViewModel.isWinLevel {
-//                    Spacer()
-//                    Button("Next Level") {
-//                        // haptic
-//                        HapticManager.instance.impact(style: .light)
-//                        questionViewModel.gotoNextLevel()
-//                    }
-//                    .buttonStyle(OrangeButton())
-//                } else {
-//                    lettersGrid
-//                }
-                
-              //  if !questionViewModel.isWinLevel {
                     HStack {
                         Button {
                             // haptic
@@ -81,7 +71,7 @@ struct LevelView: View {
                     }
                     .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
                     .padding(.horizontal, UIDevice.isIPad ? 0 : 16)
-             //   }
+
             }
             .edgesIgnoringSafeArea(.top)
             .disabled(presentAlert ? true : false)
@@ -107,69 +97,6 @@ struct LevelView_Previews: PreviewProvider {
 }
 
 extension LevelView {
-    var navBar: some View {
-        Rectangle()
-            .fill(Color.navbarColor)
-            .frame(height: 104)
-            .overlay(alignment: .bottom) {
-                HStack(spacing: 0) {
-                    Text("LEVEL")
-                    Text("\(questionViewModel.selectedLevel+1)")
-                }
-                    .bold()
-                    .font(.titleFont(for: questionViewModel.appLanguage))
-                    .foregroundColor(.white)
-                    .frame(height: 65)
-                    .frame(maxWidth: .infinity)
-                    .accessibilityElement(children: .combine)
-                    .accessibilityLabel("LEVEL")
-                    .accessibilityValue("\(questionViewModel.selectedLevel+1)")
-                    .overlay(alignment: .leading) {
-                        Circle()
-                            .fill(Color("backYellow"))
-                            .frame(width: 44, height: 44)
-                            .overlay {
-                                Image(systemName: "arrow.backward")
-                                    .bold()
-                                    .font(.title3)
-                                    .foregroundColor(.white)
-                                    .accessibilityRemoveTraits(.isImage)
-                            }
-                            .onTapGesture {
-                                // haptic
-                                HapticManager.instance.impact(style: .light)
-                                questionViewModel.userAnswer.removeAll()
-                                dismiss()
-                            }
-                            .accessibilityLabel("Start Page")
-                            .accessibilityHint("back button")
-                    }
-                    .overlay(alignment: .trailing) {
-                        
-                        HStack {
-                            Image("coinimage")
-                                .resizable()
-                                .frame(width: 35, height: 35)
-                            
-                            Text("\(questionViewModel.coin)")
-                                .font(.title3)
-                                .foregroundColor(.babyYellow)
-                        }
-                        .accessibilityElement(children: .combine)
-                        .accessibilityLabel("coin")
-                        .accessibilityValue("\(questionViewModel.coin)")
-                        .environment(\.layoutDirection, .leftToRight)
-                    }
-                    .padding(.horizontal, 16)
-                    .offset(y: 2)
-            }
-            .overlay(alignment: .bottom) {
-                Rectangle()
-                    .fill(Color("lineColor"))
-                    .frame(height: 1)
-            }
-        
-    }
     
     var questionCard: some View {
         VStack {

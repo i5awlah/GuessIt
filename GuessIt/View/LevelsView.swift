@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LevelsView: View {
     
-    @Environment(\.dismiss) var dismiss
+    
     @EnvironmentObject var questionViewModel: QuestionViewModel
     
     var body: some View {
@@ -18,7 +18,7 @@ struct LevelsView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 24) {
-                navBar
+                CustomNavBar(title: "LEVELS", backLabel: "Start Page", accessibilityLevelValue: "")
                 levelsList
             }
             .edgesIgnoringSafeArea(.top)
@@ -36,64 +36,6 @@ struct LevelsView_Previews: PreviewProvider {
 }
 
 extension LevelsView {
-    
-    var navBar: some View {
-        Rectangle()
-            .fill(Color.navbarColor)
-            .frame(height: 104)
-            .overlay(alignment: .bottom) {
-                Text("LEVELS")
-                .bold()
-                .font(.titleFont(for: questionViewModel.appLanguage))
-                .foregroundColor(.white)
-                .frame(height: 65)
-                .frame(maxWidth: .infinity)
-                .accessibilityLabel("LEVELS")
-                .overlay(alignment: .leading) {
-                    Circle()
-                        .fill(Color("backYellow"))
-                        .frame(width: 44, height: 44)
-                        .overlay {
-                            Image(systemName: "arrow.backward")
-                                .bold()
-                                .font(.title3)
-                                .foregroundColor(.white)
-                                .accessibilityRemoveTraits(.isImage)
-                        }
-                        .onTapGesture {
-                            // haptic
-                            HapticManager.instance.impact(style: .light)
-                            dismiss()
-                        }
-                        .accessibilityLabel("Start Page")
-                        .accessibilityHint("back button")
-                }
-                .overlay(alignment: .trailing) {
-                    
-                    HStack {
-                        Image("coinimage")
-                            .resizable()
-                            .frame(width: 35, height: 35)
-                        
-                        Text("\(questionViewModel.coin)")
-                            .font(.title3)
-                            .foregroundColor(.babyYellow)
-                    }
-                    .accessibilityElement(children: .combine)
-                    .accessibilityLabel("coin")
-                    .accessibilityValue("\(questionViewModel.coin)")
-                    .environment(\.layoutDirection, .leftToRight)
-                }
-                .padding(.horizontal, 16)
-                .offset(y: 2)
-            }
-            .overlay(alignment: .bottom) {
-                Rectangle()
-                    .fill(Color("lineColor"))
-                    .frame(height: 1)
-            }
-        
-    }
     
     var levelsList: some View {
         ScrollView {
