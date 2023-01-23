@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		901181EB297F16420024ABC1 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901181EA297F16420024ABC1 /* CustomNavBar.swift */; };
+		901181ED297F1C630024ABC1 /* LevelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901181EC297F1C630024ABC1 /* LevelList.swift */; };
 		901961F8296FE0D800B6187B /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901961F7296FE0D800B6187B /* HapticManager.swift */; };
 		90321DEE2966C66E00F9FC01 /* GuessItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90321DED2966C66E00F9FC01 /* GuessItApp.swift */; };
 		90321DF22966C66F00F9FC01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90321DF12966C66F00F9FC01 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		901181EA297F16420024ABC1 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
+		901181EC297F1C630024ABC1 /* LevelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelList.swift; sourceTree = "<group>"; };
 		901961F7296FE0D800B6187B /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		90321DEA2966C66E00F9FC01 /* GuessIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GuessIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90321DED2966C66E00F9FC01 /* GuessItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessItApp.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				90321DED2966C66E00F9FC01 /* GuessItApp.swift */,
 				90321DFB2966C79100F9FC01 /* StartView.swift */,
 				9085E4E4297C1C3B001C46B2 /* LevelsView.swift */,
+				901181EC297F1C630024ABC1 /* LevelList.swift */,
 				909909FC297C4FD30057DD48 /* LevelCell.swift */,
 				90321DFD2966C7B700F9FC01 /* LevelView.swift */,
 				90321DFF2966C7DF00F9FC01 /* WinView.swift */,
@@ -243,6 +246,7 @@
 				90321E052966C84900F9FC01 /* QuestionModel.swift in Sources */,
 				90D10B8F296AAD4600E8945E /* Extensions.swift in Sources */,
 				901961F8296FE0D800B6187B /* HapticManager.swift in Sources */,
+				901181ED297F1C630024ABC1 /* LevelList.swift in Sources */,
 				90D10B9D296CBAC800E8945E /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

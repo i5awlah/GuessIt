@@ -13,22 +13,30 @@ struct CustomNavBar: View {
     @Environment(\.dismiss) var dismiss
     
     let title: String
+    let showLevelNumber: Bool
     let backLabel: String
-    let accessibilityLevelValue: String
+    let showAccessibilityLevelValue: Bool
     
     var body: some View {
         Rectangle()
             .fill(Color.navbarColor)
             .frame(height: 104)
             .overlay(alignment: .bottom) {
-                Text(title)
+                HStack(spacing: 0) {
+                    Text(title.localized)
+                    Text(showLevelNumber ? "\(questionViewModel.selectedLevel+1)" : "")
+                }
                 .bold()
                 .font(.titleFont(for: questionViewModel.appLanguage))
                 .foregroundColor(.white)
                 .frame(height: 65)
                 .frame(maxWidth: .infinity)
+                .accessibilityElement(children: .combine)
                 .accessibilityLabel(title)
-                .accessibilityValue(accessibilityLevelValue)
+                .accessibilityValue(
+                    showAccessibilityLevelValue ?
+                    "\(questionViewModel.selectedLevel+1)" : ""
+                )
                 .overlay(alignment: .leading) {
                     Circle()
                         .fill(Color("backYellow"))
@@ -80,9 +88,10 @@ struct CustomNavBar: View {
 struct CustomNavBar_Previews: PreviewProvider {
     static var previews: some View {
         CustomNavBar(
-            title: "",
+            title: "LEVEL".localized,
+            showLevelNumber: true,
             backLabel: "",
-            accessibilityLevelValue: ""
+            showAccessibilityLevelValue: true
         )
         .environmentObject(QuestionViewModel())
     }

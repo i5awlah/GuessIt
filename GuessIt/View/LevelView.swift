@@ -23,54 +23,17 @@ struct LevelView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 24) {
-                CustomNavBar(title: "LEVEL", backLabel: "LEVELS", accessibilityLevelValue: "\(questionViewModel.selectedLevel+1)")
-                Text("LEVEL")
-                Text("\(questionViewModel.selectedLevel+1)")
+                CustomNavBar(
+                    title: "LEVEL",
+                    showLevelNumber: true,
+                    backLabel: "LEVELS",
+                    showAccessibilityLevelValue: true
+                )
                 
                 questionCard
                 answers
-                
                 lettersGrid
-                    HStack {
-                        Button {
-                            // haptic
-                            HapticManager.instance.notification(type: .warning)
-                            presentAlert.toggle()
-                        } label: {
-                            HStack {
-                                Image("lightLamp")
-                                Text("Hint")
-                            }
-                        }
-                        .bold()
-                        .font(.textInButtonFont(for: questionViewModel.appLanguage))
-                        .foregroundColor (.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 44)
-                        .background(Color.customOrange)
-                        .cornerRadius(16)
-                        .frame(height: 44)
-                        
-                        Button {
-                            // haptic
-                            HapticManager.instance.notification(type: .warning)
-                            questionViewModel.shareQuestion()
-                        } label: {
-                            HStack {
-                                Text("Ask Friends")
-                            }
-                        }
-                        .bold()
-                        .font(.textInButtonFont(for: questionViewModel.appLanguage))
-                        .foregroundColor (.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 44)
-                        .background(Color.customOrange)
-                        .cornerRadius(16)
-                        .frame(height: 44)
-                    }
-                    .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
-                    .padding(.horizontal, UIDevice.isIPad ? 0 : 16)
+                helperButton
 
             }
             .edgesIgnoringSafeArea(.top)
@@ -185,5 +148,48 @@ extension LevelView {
                     .opacity(item.isClicked ? 0 : 1)
             }
         }
+    }
+    
+    var helperButton: some View {
+        HStack {
+            Button {
+                // haptic
+                HapticManager.instance.notification(type: .warning)
+                presentAlert.toggle()
+            } label: {
+                HStack {
+                    Image("lightLamp")
+                    Text("Hint")
+                }
+            }
+            .bold()
+            .font(.textInButtonFont(for: questionViewModel.appLanguage))
+            .foregroundColor (.white)
+            .frame(maxWidth: .infinity)
+            .frame(height: 44)
+            .background(Color.customOrange)
+            .cornerRadius(16)
+            .frame(height: 44)
+            
+            Button {
+                // haptic
+                HapticManager.instance.notification(type: .warning)
+                questionViewModel.shareQuestion()
+            } label: {
+                HStack {
+                    Text("Ask Friends")
+                }
+            }
+            .bold()
+            .font(.textInButtonFont(for: questionViewModel.appLanguage))
+            .foregroundColor (.white)
+            .frame(maxWidth: .infinity)
+            .frame(height: 44)
+            .background(Color.customOrange)
+            .cornerRadius(16)
+            .frame(height: 44)
+        }
+        .frame(maxWidth: UIDevice.isIPad ? UIScreen.main.bounds.height * 0.6 - 35 : .infinity)
+        .padding(.horizontal, UIDevice.isIPad ? 0 : 16)
     }
 }

@@ -14,6 +14,7 @@
 // level view
 "LEVELS" = "المستويات";
 "LEVEL" = "المستوى";
+"Level" = "المستوى";
 "Guess the %@" = "خمن اسم %@";
 "Hint" = "تلميح";
 "You do not have enough coins" = "لا توجد لديك عملات كافية";

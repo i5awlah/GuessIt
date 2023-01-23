@@ -14,13 +14,22 @@ struct LevelCell: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("Level \(i)").bold()
+            HStack(spacing: 0) {
+                Text("Level")
+                Text("\(i)")
+            }
+            .bold()
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Level")
+            .accessibilityValue("\(i)")
+            
             Text("\(questionViewModel.questions[i-1].emojis)")
                 .opacity(i-1 > questionViewModel.levelNumber ? 0.2 : 1)
                 .font(.title)
                 .scaledToFit()
                 .minimumScaleFactor(0.01)
                 .lineLimit(1)
+                .accessibilityHint("Question")
         }
         .font(.letterFont(for: questionViewModel.appLanguage))
         .foregroundColor(.letterLavender)
